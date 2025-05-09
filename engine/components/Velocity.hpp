@@ -1,5 +1,6 @@
 ﻿#pragma once
+#include <glm/glm.hpp>
 
 struct Velocity {
-    float value[3] = { 0.0f, 0.0f, 0.0f };
+    glm::vec3 linear{0.0f};
 };

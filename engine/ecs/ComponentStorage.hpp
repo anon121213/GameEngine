@@ -4,8 +4,10 @@
 #include "BaseStorage.hpp"
 
 template<typename T>
-class ComponentStorage : public BaseStorage  {
+class ComponentStorage : public BaseStorage {
 public:
+    using MapType = std::unordered_map<Entity, T>;
+
     void Add(Entity entity, const T& component) {
         components[entity] = component;
     }
@@ -22,6 +24,8 @@ public:
         components.erase(entity);
     }
 
+    const MapType& GetAll() const { return components; }
+
 private:
-    std::unordered_map<Entity, T> components;
+    MapType components;
 };

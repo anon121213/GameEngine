@@ -3,7 +3,10 @@
 #include "core/Window.hpp"
 #include <chrono>
 
+#include "components/Transform.hpp"
+#include "components/Velocity.hpp"
 #include "render/RenderService.hpp"
+#include "ecs/EntityView.hpp" 
 
 Engine::Engine() {
     world = std::make_unique<World>();
@@ -16,7 +19,6 @@ void Engine::Awake() {
 
 void Engine::Start() {
     LOG_INFO("Engine: Start");
-    // future: initial systems, ECS registration
 }
 
 void Engine::FixedUpdate() {
@@ -24,7 +26,6 @@ void Engine::FixedUpdate() {
 }
 
 void Engine::Update(float dt) {
-    // TODO: update systems
 }
 
 void Engine::LateUpdate() {

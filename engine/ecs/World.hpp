@@ -3,7 +3,9 @@
 #include <typeindex>
 #include <memory>
 #include "Entity.hpp"
+#include "BaseStorage.hpp"
 #include "ComponentStorage.hpp"
+#include "EntityView.hpp"
 
 class World {
 public:
@@ -31,6 +33,11 @@ public:
     void RemoveComponent(Entity entity) {
         auto storage = GetStorage<T>();
         if (storage) storage->Remove(entity);
+    }
+
+    template<typename... Ts>
+    EntityView<Ts...> View() {
+        return EntityView<Ts...>(std::make_tuple(&GetOrCreateStorage<Ts>()...));
     }
 
 private:
