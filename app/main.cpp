@@ -1,10 +1,4 @@
-﻿#include <windows.h>
-#include <winbase.h>
-#include <glad/glad.h>
-
-#include "core/Log.hpp"
-#include "core/Window.hpp"
-#include "fsm/StateMachine.hpp"
+﻿#include "fsm/StateMachine.hpp"
 #include "fsm/States/BootstrapState.hpp"
 #include "fsm/States/StartEngineState.hpp"
 

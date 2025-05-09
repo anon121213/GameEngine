@@ -3,7 +3,7 @@
 
 class BootstrapState : public IState {
 public:
-    BootstrapState(StateMachine& fsm);
+    explicit BootstrapState(StateMachine& fsm);
     void Enter() override;
     void Exit() override;
 

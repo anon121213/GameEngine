@@ -4,8 +4,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "Log.hpp"
-
 static GLFWwindow* window = nullptr;
 
 bool Window::Init(int width, int height, const std::string& title) {
