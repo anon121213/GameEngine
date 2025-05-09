@@ -1,5 +1,8 @@
 ﻿#pragma once
+#include <glm/glm.hpp>
 
 struct Transform {
-    float position[3] = { 0.0f, 0.0f, 0.0f };
+    glm::vec3 position{0.0f};
+    glm::vec3 rotation{0.0f};
+    glm::vec3 scale{1.0f};
 };
