@@ -10,7 +10,7 @@ StartEngineState::StartEngineState(HINSTANCE hinstance) {
 
 void StartEngineState::Enter() {
     Engine engine;
-    engine.RunLoop(hinstance);
+    engine.RunEditorLoop(hinstance);
 }
 
 void StartEngineState::Exit() {

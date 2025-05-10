@@ -5,40 +5,42 @@
 
 #include "components/Transform.hpp"
 #include "render/RenderService.hpp"
+#include "services/ServiceLocator.hpp"
 
 
 Engine::Engine() {
-    world = std::make_unique<World>();
+    ServiceLocator::Register<World>(world);
 }
 
 void Engine::Awake() {
     LOG_INFO("Engine: Awake");
-    // future: service init, config load
+    systemsContainer->OnInitialize();
 }
 
 void Engine::Start() {
     LOG_INFO("Engine: Start");
+    systemsContainer->OnStart();
 }
 
 void Engine::FixedUpdate() {
-    // TODO: physics or logic fixed-timestep
+    systemsContainer->OnFixedUpdate();
 }
 
 void Engine::Update(float dt) {
-
+    systemsContainer->OnUpdate();
 }
 
 void Engine::LateUpdate() {
-    // TODO: cleanup systems
+    systemsContainer->OnLateUpdate();
 }
 
 void Engine::Shutdown() {
     LOG_INFO("Engine: Shutdown");
+    systemsContainer->OnDispose();
     world.reset();
 }
 
-void Engine::RunLoop(HINSTANCE hInstance) {
-    renderService = std::make_unique<RenderService>();
+void Engine::RunEditorLoop(HINSTANCE hInstance) {
     float accumulator = 0.0f;
     if (!renderService->Init(hInstance, 1280, 920, "GameEngine")) {
         LOG_ERROR("Failed to initialize RenderService.");
