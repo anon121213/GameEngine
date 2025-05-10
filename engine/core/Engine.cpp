@@ -4,9 +4,8 @@
 #include <chrono>
 
 #include "components/Transform.hpp"
-#include "components/Velocity.hpp"
 #include "render/RenderService.hpp"
-#include "ecs/EntityView.hpp" 
+
 
 Engine::Engine() {
     world = std::make_unique<World>();
@@ -26,6 +25,7 @@ void Engine::FixedUpdate() {
 }
 
 void Engine::Update(float dt) {
+
 }
 
 void Engine::LateUpdate() {
@@ -37,24 +37,36 @@ void Engine::Shutdown() {
     world.reset();
 }
 
-void Engine::RunLoop() {
-    using Clock = std::chrono::high_resolution_clock;
-    auto lastTime = Clock::now();
+void Engine::RunLoop(HINSTANCE hInstance) {
+    renderService = std::make_unique<RenderService>();
     float accumulator = 0.0f;
-
-    renderService->CreateWindow(1280, 720, "GameEngine");
+    if (!renderService->Init(hInstance, 1280, 920, "GameEngine")) {
+        LOG_ERROR("Failed to initialize RenderService.");
+        return;
+    }
 
     Awake();
     Start();
 
-    while (!Window::ShouldClose()) {
+    MSG msg = {};
+    while (msg.message != WM_QUIT) {
+        // Windows message processing
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+            continue;
+        }
+
+        // Engine logic + rendering
+        using Clock = std::chrono::high_resolution_clock;
+        static auto lastTime = Clock::now();
         auto now = Clock::now();
         float dt = std::chrono::duration<float>(now - lastTime).count();
         lastTime = now;
+
+        renderService->BeginFrame();
+
         accumulator += dt;
-
-        renderService->BeginFrame();   
-
         while (accumulator >= fixedTimeStep) {
             FixedUpdate();
             accumulator -= fixedTimeStep;
@@ -62,11 +74,11 @@ void Engine::RunLoop() {
 
         Update(dt);
         LateUpdate();
-        renderService->EndFrame();
 
-        Window::PollEvents();
+        renderService->EndFrame();
     }
 
     Shutdown();
 }
+
 

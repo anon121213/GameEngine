@@ -16,7 +16,7 @@ public:
     void LateUpdate();
     void Shutdown();
 
-    void RunLoop();
+    void RunLoop(HINSTANCE hInstance);
 
 private:
     bool running = true;

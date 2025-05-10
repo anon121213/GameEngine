@@ -7,7 +7,7 @@
 #include "BootstrapState.hpp"
 #include "StartEngineState.hpp"
 
-BootstrapState::BootstrapState(StateMachine& fsm) : fsm(fsm) {}
+BootstrapState::BootstrapState(StateMachine& fsm, HINSTANCE hInstance) : fsm(fsm) {}
 
 void BootstrapState::Enter() {
     LOG_INFO("BootstrapState: initializing...");

@@ -3,9 +3,11 @@
 add_library(engine STATIC ${ENGINE_SRC})
 
 target_include_directories(engine
-        PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+        PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_SOURCE_DIR}/external/glad/include
-        ${CMAKE_SOURCE_DIR}/external/glm 
+        ${CMAKE_SOURCE_DIR}/external/glfw/include
+        ${CMAKE_SOURCE_DIR}/external/DirectX-Headers/include/directx
 )
 
 target_sources(engine PRIVATE
@@ -16,4 +18,11 @@ target_link_libraries(engine
         PRIVATE
         glfw
         glm        
+)
+
+target_link_libraries(engine
+        PRIVATE
+        d3d12
+        dxgi
+        d3dcompiler
 )
