@@ -46,7 +46,7 @@ void Engine::Awake() const {
     world->AddComponent<Transform>(camera, {
         .position = {0.0f, 0.0f, -2.0f},
     });
-    world->AddComponent<CameraComponent>(camera, {});
+    world->AddComponent<CameraComponent>(camera, {.primary = true});
 }
 
 void Engine::Start() const {

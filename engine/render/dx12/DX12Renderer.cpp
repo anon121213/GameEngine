@@ -140,16 +140,10 @@ void DX12Renderer::EndFrame() {
   commandList->Reset(commandAllocator.Get(), nullptr);
 }
 
-void DX12Renderer::DrawMesh(RenderMeshComponent& mesh, const Transform& transform) {
+void DX12Renderer::DrawMesh(RenderMeshComponent& mesh, const Transform& transform) const {
   CreateMeshBuffers(mesh);
 
-  mvpData.model = transform.GetMatrixDX();
-
-  void* cbPtr = nullptr;
-  D3D12_RANGE readRange{0, 0};
-  constantBuffer->Map(0, &readRange, &cbPtr);
-  memcpy(cbPtr, &mvpData, sizeof(MVP));
-  constantBuffer->Unmap(0, nullptr);
+  UpdateConstantBuffer(transform.GetMatrixDX());
 
   commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
   commandList->IASetVertexBuffers(0, 1, &mesh.vertexBufferView);
@@ -306,6 +300,21 @@ bool DX12Renderer::CreateConstantBuffer() {
   cbAddress = constantBuffer->GetGPUVirtualAddress();
   return true;
 }
+
+void DX12Renderer::UpdateConstantBuffer(const DirectX::XMMATRIX& model) const {
+  MVP mvp{};
+  mvp.model = model;
+  mvp.view = mvpData.view;
+  mvp.projection = mvpData.projection;
+
+  void* cbPtr = nullptr;
+  D3D12_RANGE readRange{0, 0};
+  if (SUCCEEDED(constantBuffer->Map(0, &readRange, &cbPtr))) {
+    memcpy(cbPtr, &mvp, sizeof(MVP));
+    constantBuffer->Unmap(0, nullptr);
+  }
+}
+
 
 void DX12Renderer::SetViewProjection(const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& proj) {
   mvpData.view = view;

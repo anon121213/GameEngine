@@ -9,12 +9,11 @@ void CameraSystem::OnInitialize() {
 
 void CameraSystem::OnUpdate() {
   for (auto [entity, transform, camera] : world->View<Transform, CameraComponent>()) {
-    XMVECTOR eyePos = XMLoadFloat3(reinterpret_cast<const XMFLOAT3*>(&transform.position));
-    XMVECTOR forward = XMVector3TransformNormal(XMVectorSet(0, 0, 1, 0), GetRotationMatrix(transform));
-    XMVECTOR up = XMVectorSet(0, 1, 0, 0);
+    if (!camera.primary) continue;
 
-    XMMATRIX view = XMMatrixLookToLH(eyePos, forward, up);
-    XMMATRIX proj = XMMatrixPerspectiveFovLH(camera.fov, renderer->GetAspectRatio(), camera.nearPlane, camera.farPlane);
+    XMMATRIX view = transform.GetViewMatrix();
+    XMMATRIX proj = XMMatrixPerspectiveFovLH(
+        camera.fov, renderer->GetAspectRatio(), camera.nearZ, camera.farZ);
 
     renderer->SetViewProjection(view, proj);
   }

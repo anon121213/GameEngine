@@ -15,8 +15,7 @@ public:
     void BeginFrame();
     void EndFrame();
 
-    void DrawMesh(RenderMeshComponent& mesh, const Transform& transform);
-    void CreateMeshBuffers(RenderMeshComponent& mesh) const;
+    void DrawMesh(RenderMeshComponent& mesh, const Transform& transform) const;
 
     void SetViewProjection(const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& proj);
     float GetAspectRatio() const;
@@ -29,6 +28,9 @@ private:
     bool CreatePipelineState();
     bool CreateConstantBuffer();
 
+    void UpdateConstantBuffer(const DirectX::XMMATRIX& model) const;
+    void CreateMeshBuffers(RenderMeshComponent& mesh) const;
+    
     static constexpr int FrameCount = 2;
 
     Microsoft::WRL::ComPtr<ID3D12Device> device;
