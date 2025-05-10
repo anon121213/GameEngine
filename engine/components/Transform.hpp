@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include <glm/glm.hpp>
 #include "glm/ext/matrix_transform.hpp"
+#include <glm/glm.hpp>
 
 struct Transform {
     glm::vec3 position{0.0f};

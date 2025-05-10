@@ -1,13 +1,14 @@
 ﻿#pragma once
 #include "World.hpp"
 #include "../services/ServiceLocator.hpp"
+#include "core/Log.hpp"
 
 class ISystem {
 public:
     virtual ~ISystem() = default;
 
     void Initialize() {
-        world = ServiceLocator::Get<World>();
+        world = GET_SERVICE(World);
         OnInitialize();
     }
 

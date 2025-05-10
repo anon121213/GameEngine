@@ -2,6 +2,9 @@
 #include <string>
 #include <Windows.h>
 
+#include "core/Log.hpp"
+#include "services/ServiceLocator.hpp"
+
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     if (uMsg == WM_DESTROY) {
         PostQuitMessage(0);
@@ -16,7 +19,7 @@ bool RenderService::Init(HINSTANCE hInstance, int width, int height, const std::
         return false;
     }
 
-    dxRenderer = std::make_unique<DX12Renderer>();
+    dxRenderer = GET_SERVICE(DX12Renderer);
     if (!dxRenderer->Init(hwnd, width, height)) {
         return false;
     }

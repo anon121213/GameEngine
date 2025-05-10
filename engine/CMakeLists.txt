@@ -8,6 +8,7 @@ target_include_directories(engine
         ${CMAKE_SOURCE_DIR}/external/glad/include
         ${CMAKE_SOURCE_DIR}/external/glfw/include
         ${CMAKE_SOURCE_DIR}/external/DirectX-Headers/include/directx
+        ${CMAKE_SOURCE_DIR}/external/glm
 )
 
 target_sources(engine PRIVATE

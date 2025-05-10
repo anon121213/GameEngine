@@ -4,6 +4,9 @@
 #include <dxgi1_6.h>
 #include <wrl.h>
 
+#include "components/Transform.hpp"
+#include "render/components/RenderMeshComponent.hpp"
+
 class DX12Renderer {
 public:
     bool Init(HWND hwnd, int width, int height);
@@ -12,11 +15,16 @@ public:
     void BeginFrame();
     void EndFrame();
 
+    void DrawMesh(RenderMeshComponent& mesh, const Transform& transform);
+    void CreateMeshBuffers(RenderMeshComponent& mesh) const;
+    
 private:
     bool CreateDevice();
     bool CreateCommandObjects();
     bool CreateSwapChain(HWND hwnd, int width, int height);
     bool CreateRenderTargetViews();
+    bool CreateRootSignature();
+    bool CreatePipelineState();
 
     static constexpr int FrameCount = 2;
 
@@ -27,7 +35,12 @@ private:
     Microsoft::WRL::ComPtr<ID3D12Resource> renderTargets[FrameCount];
     Microsoft::WRL::ComPtr<ID3D12CommandAllocator> commandAllocator;
     Microsoft::WRL::ComPtr<ID3D12GraphicsCommandList> commandList;
+    Microsoft::WRL::ComPtr<ID3D12RootSignature> rootSignature;
+    Microsoft::WRL::ComPtr<ID3D12PipelineState> pipelineState;
 
     UINT rtvDescriptorSize = 0;
     UINT frameIndex = 0;
+
+    int width = 0;
+    int height = 0;
 };

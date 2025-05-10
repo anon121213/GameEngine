@@ -5,16 +5,39 @@
 
 #include "components/Transform.hpp"
 #include "render/RenderService.hpp"
+#include "render/systems/RenderSystem.hpp"
 #include "services/ServiceLocator.hpp"
 
 
 Engine::Engine() {
+    world = std::make_shared<World>();
+    renderService = std::make_unique<RenderService>();
+    systemsContainer = std::make_unique<SystemsContainer>();
+    
     ServiceLocator::Register<World>(world);
+    ServiceLocator::Register<DX12Renderer>(std::make_shared<DX12Renderer>());
+
+    systemsContainer->AddSystem<RenderSystem>();
 }
 
 void Engine::Awake() {
     LOG_INFO("Engine: Awake");
     systemsContainer->OnInitialize();
+
+    Entity triangle = world->CreateEntity();
+
+    RenderMeshComponent mesh;
+    mesh.vertices = {
+        {{0.0f, 0.5f, 0.0f}, {1.0f, 0.0f, 0.0f}},   // top - red
+        {{0.5f, -0.5f, 0.0f}, {0.0f, 1.0f, 0.0f}},  // right - green
+        {{-0.5f, -0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}}, // left - blue
+    };
+
+    mesh.indices = { 0, 1, 2 };
+
+    world->AddComponent<RenderMeshComponent>(triangle, mesh);
+    world->AddComponent<Transform>(triangle, {});  // identity transform
+
 }
 
 void Engine::Start() {

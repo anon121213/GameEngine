@@ -30,3 +30,8 @@ private:
         return instance;
     }
 };
+
+#define GET_SERVICE(Type) ([]() { \
+LOG_INFO("Getting " #Type " from ServiceLocator"); \
+return ServiceLocator::Get<Type>(); \
+})()

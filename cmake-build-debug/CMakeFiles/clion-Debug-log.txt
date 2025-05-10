@@ -4,6 +4,6 @@
 -- Documentation generation requires Doxygen 1.9.8 or later
 -- GLM: Version 1.0.2
 -- GLM: Build with C++ features auto detection
--- Configuring done (0.2s)
+-- Configuring done (0.3s)
 -- Generating done (0.1s)
 -- Build files have been written to: E:/Projects/GameEngine/cmake-build-debug

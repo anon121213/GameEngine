@@ -54,6 +54,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("E:/Projects/GameEngine/cmake-build-debug/external/DirectX-Headers/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("E:/Projects/GameEngine/cmake-build-debug/engine/cmake_install.cmake")
 endif()
 

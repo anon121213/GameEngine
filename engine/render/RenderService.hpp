@@ -22,5 +22,5 @@ private:
     HWND hwnd = nullptr;
     HINSTANCE instance = nullptr;
 
-    std::unique_ptr<DX12Renderer> dxRenderer;
+    std::shared_ptr<DX12Renderer> dxRenderer;
 };

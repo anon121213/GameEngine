@@ -9,8 +9,6 @@
 #include "services/ServiceLocator.hpp"
 
 void BootstrapState::Enter() {
-    LOG_INFO("BootstrapState: initializing...");
-
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 

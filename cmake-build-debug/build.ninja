@@ -122,7 +122,7 @@ build cmake_object_order_depends_target_GameApp: phony || cmake_object_order_dep
 build app/CMakeFiles/GameApp.dir/main.cpp.obj: CXX_COMPILER__GameApp_unscanned_Debug E$:/Projects/GameEngine/app/main.cpp || cmake_object_order_depends_target_GameApp
   DEP_FILE = app\CMakeFiles\GameApp.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glm
+  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glfw/include -IE:/Projects/GameEngine/external/DirectX-Headers/include/directx
   OBJECT_DIR = app\CMakeFiles\GameApp.dir
   OBJECT_FILE_DIR = app\CMakeFiles\GameApp.dir
 
@@ -136,7 +136,7 @@ build app/CMakeFiles/GameApp.dir/main.cpp.obj: CXX_COMPILER__GameApp_unscanned_D
 
 build bin/GameApp.exe: CXX_EXECUTABLE_LINKER__GameApp_Debug app/CMakeFiles/GameApp.dir/main.cpp.obj | engine/libengine.a external/glfw/src/libglfw3.a external/glm/glm/libglm.a || engine/libengine.a external/glfw/src/libglfw3.a external/glm/glm/libglm.a
   FLAGS = -g
-  LINK_LIBRARIES = engine/libengine.a  external/glfw/src/libglfw3.a  external/glm/glm/libglm.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = engine/libengine.a  external/glfw/src/libglfw3.a  external/glm/glm/libglm.a  -ld3d12  -ldxgi  -ld3dcompiler  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = app\CMakeFiles\GameApp.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -816,6 +816,534 @@ build external/glm/glm/install/strip: phony external/glm/glm/CMakeFiles/install/
 # E:/Projects/GameEngine/CMakeLists.txt
 # =============================================================================
 
+
+#############################################
+# Utility command for Experimental
+
+build external/DirectX-Headers/Experimental: phony external/DirectX-Headers/CMakeFiles/Experimental
+
+
+#############################################
+# Utility command for Nightly
+
+build external/DirectX-Headers/Nightly: phony external/DirectX-Headers/CMakeFiles/Nightly
+
+
+#############################################
+# Utility command for Continuous
+
+build external/DirectX-Headers/Continuous: phony external/DirectX-Headers/CMakeFiles/Continuous
+
+
+#############################################
+# Utility command for NightlyMemoryCheck
+
+build external/DirectX-Headers/NightlyMemoryCheck: phony external/DirectX-Headers/CMakeFiles/NightlyMemoryCheck
+
+
+#############################################
+# Utility command for NightlyStart
+
+build external/DirectX-Headers/NightlyStart: phony external/DirectX-Headers/CMakeFiles/NightlyStart
+
+
+#############################################
+# Utility command for NightlyUpdate
+
+build external/DirectX-Headers/NightlyUpdate: phony external/DirectX-Headers/CMakeFiles/NightlyUpdate
+
+
+#############################################
+# Utility command for NightlyConfigure
+
+build external/DirectX-Headers/NightlyConfigure: phony external/DirectX-Headers/CMakeFiles/NightlyConfigure
+
+
+#############################################
+# Utility command for NightlyBuild
+
+build external/DirectX-Headers/NightlyBuild: phony external/DirectX-Headers/CMakeFiles/NightlyBuild
+
+
+#############################################
+# Utility command for NightlyTest
+
+build external/DirectX-Headers/NightlyTest: phony external/DirectX-Headers/CMakeFiles/NightlyTest
+
+
+#############################################
+# Utility command for NightlyCoverage
+
+build external/DirectX-Headers/NightlyCoverage: phony external/DirectX-Headers/CMakeFiles/NightlyCoverage
+
+
+#############################################
+# Utility command for NightlyMemCheck
+
+build external/DirectX-Headers/NightlyMemCheck: phony external/DirectX-Headers/CMakeFiles/NightlyMemCheck
+
+
+#############################################
+# Utility command for NightlySubmit
+
+build external/DirectX-Headers/NightlySubmit: phony external/DirectX-Headers/CMakeFiles/NightlySubmit
+
+
+#############################################
+# Utility command for ExperimentalStart
+
+build external/DirectX-Headers/ExperimentalStart: phony external/DirectX-Headers/CMakeFiles/ExperimentalStart
+
+
+#############################################
+# Utility command for ExperimentalUpdate
+
+build external/DirectX-Headers/ExperimentalUpdate: phony external/DirectX-Headers/CMakeFiles/ExperimentalUpdate
+
+
+#############################################
+# Utility command for ExperimentalConfigure
+
+build external/DirectX-Headers/ExperimentalConfigure: phony external/DirectX-Headers/CMakeFiles/ExperimentalConfigure
+
+
+#############################################
+# Utility command for ExperimentalBuild
+
+build external/DirectX-Headers/ExperimentalBuild: phony external/DirectX-Headers/CMakeFiles/ExperimentalBuild
+
+
+#############################################
+# Utility command for ExperimentalTest
+
+build external/DirectX-Headers/ExperimentalTest: phony external/DirectX-Headers/CMakeFiles/ExperimentalTest
+
+
+#############################################
+# Utility command for ExperimentalCoverage
+
+build external/DirectX-Headers/ExperimentalCoverage: phony external/DirectX-Headers/CMakeFiles/ExperimentalCoverage
+
+
+#############################################
+# Utility command for ExperimentalMemCheck
+
+build external/DirectX-Headers/ExperimentalMemCheck: phony external/DirectX-Headers/CMakeFiles/ExperimentalMemCheck
+
+
+#############################################
+# Utility command for ExperimentalSubmit
+
+build external/DirectX-Headers/ExperimentalSubmit: phony external/DirectX-Headers/CMakeFiles/ExperimentalSubmit
+
+
+#############################################
+# Utility command for ContinuousStart
+
+build external/DirectX-Headers/ContinuousStart: phony external/DirectX-Headers/CMakeFiles/ContinuousStart
+
+
+#############################################
+# Utility command for ContinuousUpdate
+
+build external/DirectX-Headers/ContinuousUpdate: phony external/DirectX-Headers/CMakeFiles/ContinuousUpdate
+
+
+#############################################
+# Utility command for ContinuousConfigure
+
+build external/DirectX-Headers/ContinuousConfigure: phony external/DirectX-Headers/CMakeFiles/ContinuousConfigure
+
+
+#############################################
+# Utility command for ContinuousBuild
+
+build external/DirectX-Headers/ContinuousBuild: phony external/DirectX-Headers/CMakeFiles/ContinuousBuild
+
+
+#############################################
+# Utility command for ContinuousTest
+
+build external/DirectX-Headers/ContinuousTest: phony external/DirectX-Headers/CMakeFiles/ContinuousTest
+
+
+#############################################
+# Utility command for ContinuousCoverage
+
+build external/DirectX-Headers/ContinuousCoverage: phony external/DirectX-Headers/CMakeFiles/ContinuousCoverage
+
+
+#############################################
+# Utility command for ContinuousMemCheck
+
+build external/DirectX-Headers/ContinuousMemCheck: phony external/DirectX-Headers/CMakeFiles/ContinuousMemCheck
+
+
+#############################################
+# Utility command for ContinuousSubmit
+
+build external/DirectX-Headers/ContinuousSubmit: phony external/DirectX-Headers/CMakeFiles/ContinuousSubmit
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target DirectX-Headers
+
+
+#############################################
+# Order-only phony target for DirectX-Headers
+
+build cmake_object_order_depends_target_DirectX-Headers: phony || .
+
+build external/DirectX-Headers/CMakeFiles/DirectX-Headers.dir/src/d3dx12_property_format_table.cpp.obj: CXX_COMPILER__DirectX-Headers_unscanned_Debug E$:/Projects/GameEngine/external/DirectX-Headers/src/d3dx12_property_format_table.cpp || cmake_object_order_depends_target_DirectX-Headers
+  DEFINES = -D__REQUIRED_RPCNDR_H_VERSION__=475
+  DEP_FILE = external\DirectX-Headers\CMakeFiles\DirectX-Headers.dir\src\d3dx12_property_format_table.cpp.obj.d
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -IE:/Projects/GameEngine/external/DirectX-Headers/include/directx -isystem E:/Projects/GameEngine/external/DirectX-Headers/include
+  OBJECT_DIR = external\DirectX-Headers\CMakeFiles\DirectX-Headers.dir
+  OBJECT_FILE_DIR = external\DirectX-Headers\CMakeFiles\DirectX-Headers.dir\src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target DirectX-Headers
+
+
+#############################################
+# Link the static library external\DirectX-Headers\libDirectX-Headers.a
+
+build external/DirectX-Headers/libDirectX-Headers.a: CXX_STATIC_LIBRARY_LINKER__DirectX-Headers_Debug external/DirectX-Headers/CMakeFiles/DirectX-Headers.dir/src/d3dx12_property_format_table.cpp.obj
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = external\DirectX-Headers\CMakeFiles\DirectX-Headers.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = external\DirectX-Headers\libDirectX-Headers.a
+  TARGET_PDB = DirectX-Headers.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target DirectX-Guids
+
+
+#############################################
+# Order-only phony target for DirectX-Guids
+
+build cmake_object_order_depends_target_DirectX-Guids: phony || cmake_object_order_depends_target_DirectX-Headers
+
+build external/DirectX-Headers/CMakeFiles/DirectX-Guids.dir/src/dxguids.cpp.obj: CXX_COMPILER__DirectX-Guids_unscanned_Debug E$:/Projects/GameEngine/external/DirectX-Headers/src/dxguids.cpp || cmake_object_order_depends_target_DirectX-Guids
+  DEFINES = -D__REQUIRED_RPCNDR_H_VERSION__=475
+  DEP_FILE = external\DirectX-Headers\CMakeFiles\DirectX-Guids.dir\src\dxguids.cpp.obj.d
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -isystem E:/Projects/GameEngine/external/DirectX-Headers/include
+  OBJECT_DIR = external\DirectX-Headers\CMakeFiles\DirectX-Guids.dir
+  OBJECT_FILE_DIR = external\DirectX-Headers\CMakeFiles\DirectX-Guids.dir\src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target DirectX-Guids
+
+
+#############################################
+# Link the static library external\DirectX-Headers\libDirectX-Guids.a
+
+build external/DirectX-Headers/libDirectX-Guids.a: CXX_STATIC_LIBRARY_LINKER__DirectX-Guids_Debug external/DirectX-Headers/CMakeFiles/DirectX-Guids.dir/src/dxguids.cpp.obj || external/DirectX-Headers/libDirectX-Headers.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = external\DirectX-Headers\CMakeFiles\DirectX-Guids.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = external\DirectX-Headers\libDirectX-Guids.a
+  TARGET_PDB = DirectX-Guids.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build external/DirectX-Headers/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build external/DirectX-Headers/edit_cache: phony external/DirectX-Headers/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build external/DirectX-Headers/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SE:\Projects\GameEngine -BE:\Projects\GameEngine\cmake-build-debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build external/DirectX-Headers/rebuild_cache: phony external/DirectX-Headers/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build external/DirectX-Headers/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build external/DirectX-Headers/CMakeFiles/install.util: CUSTOM_COMMAND external/DirectX-Headers/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build external/DirectX-Headers/install: phony external/DirectX-Headers/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build external/DirectX-Headers/CMakeFiles/install/local.util: CUSTOM_COMMAND external/DirectX-Headers/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build external/DirectX-Headers/install/local: phony external/DirectX-Headers/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build external/DirectX-Headers/CMakeFiles/install/strip.util: CUSTOM_COMMAND external/DirectX-Headers/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build external/DirectX-Headers/install/strip: phony external/DirectX-Headers/CMakeFiles/install/strip.util
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\Experimental
+
+build external/DirectX-Headers/CMakeFiles/Experimental | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/Experimental: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D Experimental"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\Nightly
+
+build external/DirectX-Headers/CMakeFiles/Nightly | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/Nightly: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D Nightly"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\Continuous
+
+build external/DirectX-Headers/CMakeFiles/Continuous | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/Continuous: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D Continuous"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\NightlyMemoryCheck
+
+build external/DirectX-Headers/CMakeFiles/NightlyMemoryCheck | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/NightlyMemoryCheck: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D NightlyMemoryCheck"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\NightlyStart
+
+build external/DirectX-Headers/CMakeFiles/NightlyStart | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/NightlyStart: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D NightlyStart"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\NightlyUpdate
+
+build external/DirectX-Headers/CMakeFiles/NightlyUpdate | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/NightlyUpdate: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D NightlyUpdate"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\NightlyConfigure
+
+build external/DirectX-Headers/CMakeFiles/NightlyConfigure | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/NightlyConfigure: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D NightlyConfigure"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\NightlyBuild
+
+build external/DirectX-Headers/CMakeFiles/NightlyBuild | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/NightlyBuild: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D NightlyBuild"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\NightlyTest
+
+build external/DirectX-Headers/CMakeFiles/NightlyTest | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/NightlyTest: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D NightlyTest"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\NightlyCoverage
+
+build external/DirectX-Headers/CMakeFiles/NightlyCoverage | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/NightlyCoverage: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D NightlyCoverage"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\NightlyMemCheck
+
+build external/DirectX-Headers/CMakeFiles/NightlyMemCheck | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/NightlyMemCheck: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D NightlyMemCheck"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\NightlySubmit
+
+build external/DirectX-Headers/CMakeFiles/NightlySubmit | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/NightlySubmit: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D NightlySubmit"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ExperimentalStart
+
+build external/DirectX-Headers/CMakeFiles/ExperimentalStart | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ExperimentalStart: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ExperimentalStart"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ExperimentalUpdate
+
+build external/DirectX-Headers/CMakeFiles/ExperimentalUpdate | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ExperimentalUpdate: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ExperimentalUpdate"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ExperimentalConfigure
+
+build external/DirectX-Headers/CMakeFiles/ExperimentalConfigure | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ExperimentalConfigure: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ExperimentalConfigure"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ExperimentalBuild
+
+build external/DirectX-Headers/CMakeFiles/ExperimentalBuild | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ExperimentalBuild: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ExperimentalBuild"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ExperimentalTest
+
+build external/DirectX-Headers/CMakeFiles/ExperimentalTest | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ExperimentalTest: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ExperimentalTest"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ExperimentalCoverage
+
+build external/DirectX-Headers/CMakeFiles/ExperimentalCoverage | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ExperimentalCoverage: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ExperimentalCoverage"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ExperimentalMemCheck
+
+build external/DirectX-Headers/CMakeFiles/ExperimentalMemCheck | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ExperimentalMemCheck: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ExperimentalMemCheck"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ExperimentalSubmit
+
+build external/DirectX-Headers/CMakeFiles/ExperimentalSubmit | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ExperimentalSubmit: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ExperimentalSubmit"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ContinuousStart
+
+build external/DirectX-Headers/CMakeFiles/ContinuousStart | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ContinuousStart: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ContinuousStart"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ContinuousUpdate
+
+build external/DirectX-Headers/CMakeFiles/ContinuousUpdate | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ContinuousUpdate: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ContinuousUpdate"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ContinuousConfigure
+
+build external/DirectX-Headers/CMakeFiles/ContinuousConfigure | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ContinuousConfigure: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ContinuousConfigure"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ContinuousBuild
+
+build external/DirectX-Headers/CMakeFiles/ContinuousBuild | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ContinuousBuild: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ContinuousBuild"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ContinuousTest
+
+build external/DirectX-Headers/CMakeFiles/ContinuousTest | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ContinuousTest: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ContinuousTest"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ContinuousCoverage
+
+build external/DirectX-Headers/CMakeFiles/ContinuousCoverage | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ContinuousCoverage: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ContinuousCoverage"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ContinuousMemCheck
+
+build external/DirectX-Headers/CMakeFiles/ContinuousMemCheck | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ContinuousMemCheck: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ContinuousMemCheck"
+  pool = console
+
+
+#############################################
+# Custom command for external\DirectX-Headers\CMakeFiles\ContinuousSubmit
+
+build external/DirectX-Headers/CMakeFiles/ContinuousSubmit | ${cmake_ninja_workdir}external/DirectX-Headers/CMakeFiles/ContinuousSubmit: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\Projects\GameEngine\cmake-build-debug\external\DirectX-Headers && "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\ctest.exe" -D ContinuousSubmit"
+  pool = console
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# E:/Projects/GameEngine/CMakeLists.txt
+# =============================================================================
+
 # =============================================================================
 # Object build statements for STATIC_LIBRARY target engine
 
@@ -828,49 +1356,56 @@ build cmake_object_order_depends_target_engine: phony || cmake_object_order_depe
 build engine/CMakeFiles/engine.dir/core/Engine.cpp.obj: CXX_COMPILER__engine_unscanned_Debug E$:/Projects/GameEngine/engine/core/Engine.cpp || cmake_object_order_depends_target_engine
   DEP_FILE = engine\CMakeFiles\engine.dir\core\Engine.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glm -IE:/Projects/GameEngine/external/glfw/include
+  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glfw/include -IE:/Projects/GameEngine/external/DirectX-Headers/include/directx -IE:/Projects/GameEngine/external/glm
   OBJECT_DIR = engine\CMakeFiles\engine.dir
   OBJECT_FILE_DIR = engine\CMakeFiles\engine.dir\core
 
 build engine/CMakeFiles/engine.dir/core/Window.cpp.obj: CXX_COMPILER__engine_unscanned_Debug E$:/Projects/GameEngine/engine/core/Window.cpp || cmake_object_order_depends_target_engine
   DEP_FILE = engine\CMakeFiles\engine.dir\core\Window.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glm -IE:/Projects/GameEngine/external/glfw/include
+  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glfw/include -IE:/Projects/GameEngine/external/DirectX-Headers/include/directx -IE:/Projects/GameEngine/external/glm
   OBJECT_DIR = engine\CMakeFiles\engine.dir
   OBJECT_FILE_DIR = engine\CMakeFiles\engine.dir\core
 
 build engine/CMakeFiles/engine.dir/core/log.cpp.obj: CXX_COMPILER__engine_unscanned_Debug E$:/Projects/GameEngine/engine/core/log.cpp || cmake_object_order_depends_target_engine
   DEP_FILE = engine\CMakeFiles\engine.dir\core\log.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glm -IE:/Projects/GameEngine/external/glfw/include
+  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glfw/include -IE:/Projects/GameEngine/external/DirectX-Headers/include/directx -IE:/Projects/GameEngine/external/glm
   OBJECT_DIR = engine\CMakeFiles\engine.dir
   OBJECT_FILE_DIR = engine\CMakeFiles\engine.dir\core
 
 build engine/CMakeFiles/engine.dir/fsm/States/BootstrapState.cpp.obj: CXX_COMPILER__engine_unscanned_Debug E$:/Projects/GameEngine/engine/fsm/States/BootstrapState.cpp || cmake_object_order_depends_target_engine
   DEP_FILE = engine\CMakeFiles\engine.dir\fsm\States\BootstrapState.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glm -IE:/Projects/GameEngine/external/glfw/include
+  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glfw/include -IE:/Projects/GameEngine/external/DirectX-Headers/include/directx -IE:/Projects/GameEngine/external/glm
   OBJECT_DIR = engine\CMakeFiles\engine.dir
   OBJECT_FILE_DIR = engine\CMakeFiles\engine.dir\fsm\States
 
 build engine/CMakeFiles/engine.dir/fsm/States/StartEngineState.cpp.obj: CXX_COMPILER__engine_unscanned_Debug E$:/Projects/GameEngine/engine/fsm/States/StartEngineState.cpp || cmake_object_order_depends_target_engine
   DEP_FILE = engine\CMakeFiles\engine.dir\fsm\States\StartEngineState.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glm -IE:/Projects/GameEngine/external/glfw/include
+  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glfw/include -IE:/Projects/GameEngine/external/DirectX-Headers/include/directx -IE:/Projects/GameEngine/external/glm
   OBJECT_DIR = engine\CMakeFiles\engine.dir
   OBJECT_FILE_DIR = engine\CMakeFiles\engine.dir\fsm\States
 
 build engine/CMakeFiles/engine.dir/render/RenderService.cpp.obj: CXX_COMPILER__engine_unscanned_Debug E$:/Projects/GameEngine/engine/render/RenderService.cpp || cmake_object_order_depends_target_engine
   DEP_FILE = engine\CMakeFiles\engine.dir\render\RenderService.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glm -IE:/Projects/GameEngine/external/glfw/include
+  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glfw/include -IE:/Projects/GameEngine/external/DirectX-Headers/include/directx -IE:/Projects/GameEngine/external/glm
   OBJECT_DIR = engine\CMakeFiles\engine.dir
   OBJECT_FILE_DIR = engine\CMakeFiles\engine.dir\render
+
+build engine/CMakeFiles/engine.dir/render/dx12/DX12Renderer.cpp.obj: CXX_COMPILER__engine_unscanned_Debug E$:/Projects/GameEngine/engine/render/dx12/DX12Renderer.cpp || cmake_object_order_depends_target_engine
+  DEP_FILE = engine\CMakeFiles\engine.dir\render\dx12\DX12Renderer.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glfw/include -IE:/Projects/GameEngine/external/DirectX-Headers/include/directx -IE:/Projects/GameEngine/external/glm
+  OBJECT_DIR = engine\CMakeFiles\engine.dir
+  OBJECT_FILE_DIR = engine\CMakeFiles\engine.dir\render\dx12
 
 build engine/CMakeFiles/engine.dir/__/external/glad/src/glad.c.obj: C_COMPILER__engine_unscanned_Debug E$:/Projects/GameEngine/external/glad/src/glad.c || cmake_object_order_depends_target_engine
   DEP_FILE = engine\CMakeFiles\engine.dir\__\external\glad\src\glad.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glm -IE:/Projects/GameEngine/external/glfw/include
+  INCLUDES = -IE:/Projects/GameEngine/engine -IE:/Projects/GameEngine/external/glad/include -IE:/Projects/GameEngine/external/glfw/include -IE:/Projects/GameEngine/external/DirectX-Headers/include/directx -IE:/Projects/GameEngine/external/glm
   OBJECT_DIR = engine\CMakeFiles\engine.dir
   OBJECT_FILE_DIR = engine\CMakeFiles\engine.dir\__\external\glad\src
 
@@ -882,7 +1417,7 @@ build engine/CMakeFiles/engine.dir/__/external/glad/src/glad.c.obj: C_COMPILER__
 #############################################
 # Link the static library engine\libengine.a
 
-build engine/libengine.a: CXX_STATIC_LIBRARY_LINKER__engine_Debug engine/CMakeFiles/engine.dir/core/Engine.cpp.obj engine/CMakeFiles/engine.dir/core/Window.cpp.obj engine/CMakeFiles/engine.dir/core/log.cpp.obj engine/CMakeFiles/engine.dir/fsm/States/BootstrapState.cpp.obj engine/CMakeFiles/engine.dir/fsm/States/StartEngineState.cpp.obj engine/CMakeFiles/engine.dir/render/RenderService.cpp.obj engine/CMakeFiles/engine.dir/__/external/glad/src/glad.c.obj || external/glfw/src/libglfw3.a external/glm/glm/libglm.a
+build engine/libengine.a: CXX_STATIC_LIBRARY_LINKER__engine_Debug engine/CMakeFiles/engine.dir/core/Engine.cpp.obj engine/CMakeFiles/engine.dir/core/Window.cpp.obj engine/CMakeFiles/engine.dir/core/log.cpp.obj engine/CMakeFiles/engine.dir/fsm/States/BootstrapState.cpp.obj engine/CMakeFiles/engine.dir/fsm/States/StartEngineState.cpp.obj engine/CMakeFiles/engine.dir/render/RenderService.cpp.obj engine/CMakeFiles/engine.dir/render/dx12/DX12Renderer.cpp.obj engine/CMakeFiles/engine.dir/__/external/glad/src/glad.c.obj || external/glfw/src/libglfw3.a external/glm/glm/libglm.a
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = engine\CMakeFiles\engine.dir
   POST_BUILD = cd .
@@ -958,15 +1493,79 @@ build engine/install/strip: phony engine/CMakeFiles/install/strip.util
 # =============================================================================
 # Target aliases.
 
+build Continuous: phony external/DirectX-Headers/Continuous
+
+build ContinuousBuild: phony external/DirectX-Headers/ContinuousBuild
+
+build ContinuousConfigure: phony external/DirectX-Headers/ContinuousConfigure
+
+build ContinuousCoverage: phony external/DirectX-Headers/ContinuousCoverage
+
+build ContinuousMemCheck: phony external/DirectX-Headers/ContinuousMemCheck
+
+build ContinuousStart: phony external/DirectX-Headers/ContinuousStart
+
+build ContinuousSubmit: phony external/DirectX-Headers/ContinuousSubmit
+
+build ContinuousTest: phony external/DirectX-Headers/ContinuousTest
+
+build ContinuousUpdate: phony external/DirectX-Headers/ContinuousUpdate
+
+build DirectX-Guids: phony external/DirectX-Headers/libDirectX-Guids.a
+
+build DirectX-Headers: phony external/DirectX-Headers/libDirectX-Headers.a
+
+build Experimental: phony external/DirectX-Headers/Experimental
+
+build ExperimentalBuild: phony external/DirectX-Headers/ExperimentalBuild
+
+build ExperimentalConfigure: phony external/DirectX-Headers/ExperimentalConfigure
+
+build ExperimentalCoverage: phony external/DirectX-Headers/ExperimentalCoverage
+
+build ExperimentalMemCheck: phony external/DirectX-Headers/ExperimentalMemCheck
+
+build ExperimentalStart: phony external/DirectX-Headers/ExperimentalStart
+
+build ExperimentalSubmit: phony external/DirectX-Headers/ExperimentalSubmit
+
+build ExperimentalTest: phony external/DirectX-Headers/ExperimentalTest
+
+build ExperimentalUpdate: phony external/DirectX-Headers/ExperimentalUpdate
+
 build GameApp: phony bin/GameApp.exe
 
 build GameApp.exe: phony bin/GameApp.exe
+
+build Nightly: phony external/DirectX-Headers/Nightly
+
+build NightlyBuild: phony external/DirectX-Headers/NightlyBuild
+
+build NightlyConfigure: phony external/DirectX-Headers/NightlyConfigure
+
+build NightlyCoverage: phony external/DirectX-Headers/NightlyCoverage
+
+build NightlyMemCheck: phony external/DirectX-Headers/NightlyMemCheck
+
+build NightlyMemoryCheck: phony external/DirectX-Headers/NightlyMemoryCheck
+
+build NightlyStart: phony external/DirectX-Headers/NightlyStart
+
+build NightlySubmit: phony external/DirectX-Headers/NightlySubmit
+
+build NightlyTest: phony external/DirectX-Headers/NightlyTest
+
+build NightlyUpdate: phony external/DirectX-Headers/NightlyUpdate
 
 build engine: phony engine/libengine.a
 
 build glfw: phony external/glfw/src/libglfw3.a
 
 build glm: phony external/glm/glm/libglm.a
+
+build libDirectX-Guids.a: phony external/DirectX-Headers/libDirectX-Guids.a
+
+build libDirectX-Headers.a: phony external/DirectX-Headers/libDirectX-Headers.a
 
 build libengine.a: phony engine/libengine.a
 
@@ -986,7 +1585,7 @@ build update_mappings: phony external/glfw/src/update_mappings
 #############################################
 # Folder: E:/Projects/GameEngine/cmake-build-debug
 
-build all: phony app/all external/glfw/all external/glm/all engine/all
+build all: phony app/all external/glfw/all external/glm/all external/DirectX-Headers/all engine/all
 
 # =============================================================================
 
@@ -1001,6 +1600,13 @@ build app/all: phony bin/GameApp.exe
 # Folder: E:/Projects/GameEngine/cmake-build-debug/engine
 
 build engine/all: phony engine/libengine.a
+
+# =============================================================================
+
+#############################################
+# Folder: E:/Projects/GameEngine/cmake-build-debug/external/DirectX-Headers
+
+build external/DirectX-Headers/all: phony external/DirectX-Headers/libDirectX-Headers.a external/DirectX-Headers/libDirectX-Guids.a
 
 # =============================================================================
 
@@ -1058,14 +1664,14 @@ build E$:/Projects/GameEngine/cmake-build-debug/CMakeFiles/cmake.verify_globs: V
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE E$:/Projects/GameEngine/cmake-build-debug/CMakeFiles/cmake.verify_globs | C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDependentOption.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckLibraryExists.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindDoxygen.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageMessage.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindThreads.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/GNUInstallDirs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake E$:/Projects/GameEngine/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake E$:/Projects/GameEngine/CMakeLists.txt E$:/Projects/GameEngine/app/CMakeLists.txt E$:/Projects/GameEngine/engine/CMakeLists.txt E$:/Projects/GameEngine/external/glfw/CMakeLists.txt E$:/Projects/GameEngine/external/glfw/CMake/cmake_uninstall.cmake.in E$:/Projects/GameEngine/external/glfw/CMake/glfw3.pc.in E$:/Projects/GameEngine/external/glfw/CMake/glfw3Config.cmake.in E$:/Projects/GameEngine/external/glfw/docs/CMakeLists.txt E$:/Projects/GameEngine/external/glfw/src/CMakeLists.txt E$:/Projects/GameEngine/external/glm/CMakeLists.txt E$:/Projects/GameEngine/external/glm/glm/CMakeLists.txt
+build build.ninja: RERUN_CMAKE E$:/Projects/GameEngine/cmake-build-debug/CMakeFiles/cmake.verify_globs | C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDependentOption.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CTest.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CTestTargets.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CTestUseLaunchers.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckLibraryExists.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/DartConfiguration.tcl.in C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindDoxygen.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageMessage.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindThreads.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/GNUInstallDirs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake E$:/Projects/GameEngine/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake E$:/Projects/GameEngine/CMakeLists.txt E$:/Projects/GameEngine/app/CMakeLists.txt E$:/Projects/GameEngine/engine/CMakeLists.txt E$:/Projects/GameEngine/external/DirectX-Headers/CMakeLists.txt E$:/Projects/GameEngine/external/glfw/CMakeLists.txt E$:/Projects/GameEngine/external/glfw/CMake/cmake_uninstall.cmake.in E$:/Projects/GameEngine/external/glfw/CMake/glfw3.pc.in E$:/Projects/GameEngine/external/glfw/CMake/glfw3Config.cmake.in E$:/Projects/GameEngine/external/glfw/docs/CMakeLists.txt E$:/Projects/GameEngine/external/glfw/src/CMakeLists.txt E$:/Projects/GameEngine/external/glm/CMakeLists.txt E$:/Projects/GameEngine/external/glm/glm/CMakeLists.txt
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDependentOption.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckLibraryExists.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindDoxygen.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageMessage.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindThreads.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/GNUInstallDirs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake E$:/Projects/GameEngine/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake E$:/Projects/GameEngine/CMakeLists.txt E$:/Projects/GameEngine/app/CMakeLists.txt E$:/Projects/GameEngine/engine/CMakeLists.txt E$:/Projects/GameEngine/external/glfw/CMakeLists.txt E$:/Projects/GameEngine/external/glfw/CMake/cmake_uninstall.cmake.in E$:/Projects/GameEngine/external/glfw/CMake/glfw3.pc.in E$:/Projects/GameEngine/external/glfw/CMake/glfw3Config.cmake.in E$:/Projects/GameEngine/external/glfw/docs/CMakeLists.txt E$:/Projects/GameEngine/external/glfw/src/CMakeLists.txt E$:/Projects/GameEngine/external/glm/CMakeLists.txt E$:/Projects/GameEngine/external/glm/glm/CMakeLists.txt: phony
+build C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDependentOption.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CTest.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CTestTargets.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CTestUseLaunchers.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckLibraryExists.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/DartConfiguration.tcl.in C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindDoxygen.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageMessage.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/FindThreads.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/GNUInstallDirs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.1.1/bin/cmake/win/x64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake E$:/Projects/GameEngine/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake E$:/Projects/GameEngine/CMakeLists.txt E$:/Projects/GameEngine/app/CMakeLists.txt E$:/Projects/GameEngine/engine/CMakeLists.txt E$:/Projects/GameEngine/external/DirectX-Headers/CMakeLists.txt E$:/Projects/GameEngine/external/glfw/CMakeLists.txt E$:/Projects/GameEngine/external/glfw/CMake/cmake_uninstall.cmake.in E$:/Projects/GameEngine/external/glfw/CMake/glfw3.pc.in E$:/Projects/GameEngine/external/glfw/CMake/glfw3Config.cmake.in E$:/Projects/GameEngine/external/glfw/docs/CMakeLists.txt E$:/Projects/GameEngine/external/glfw/src/CMakeLists.txt E$:/Projects/GameEngine/external/glm/CMakeLists.txt E$:/Projects/GameEngine/external/glm/glm/CMakeLists.txt: phony
 
 
 #############################################

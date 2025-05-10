@@ -11,6 +11,7 @@ set(OLD_GLOB
   "E:/Projects/GameEngine/engine/fsm/States/BootstrapState.cpp"
   "E:/Projects/GameEngine/engine/fsm/States/StartEngineState.cpp"
   "E:/Projects/GameEngine/engine/render/RenderService.cpp"
+  "E:/Projects/GameEngine/engine/render/dx12/DX12Renderer.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -28,12 +29,15 @@ set(OLD_GLOB
   "E:/Projects/GameEngine/engine/ecs/BaseStorage.hpp"
   "E:/Projects/GameEngine/engine/ecs/ComponentStorage.hpp"
   "E:/Projects/GameEngine/engine/ecs/Entity.hpp"
+  "E:/Projects/GameEngine/engine/ecs/EntityView.hpp"
   "E:/Projects/GameEngine/engine/ecs/World.hpp"
   "E:/Projects/GameEngine/engine/fsm/IState.hpp"
   "E:/Projects/GameEngine/engine/fsm/StateMachine.hpp"
   "E:/Projects/GameEngine/engine/fsm/States/BootstrapState.hpp"
   "E:/Projects/GameEngine/engine/fsm/States/StartEngineState.hpp"
   "E:/Projects/GameEngine/engine/render/RenderService.hpp"
+  "E:/Projects/GameEngine/engine/render/components/MeshRenderer.hpp"
+  "E:/Projects/GameEngine/engine/render/dx12/DX12Renderer.hpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

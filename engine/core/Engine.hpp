@@ -17,9 +17,9 @@ private:
     bool running = true;
     float fixedTimeStep = 1.0f / 60.0f;
 
-    std::shared_ptr<World> world = std::make_shared<World>();
-    std::unique_ptr<RenderService> renderService = std::make_unique<RenderService>();
-    std::unique_ptr<SystemsContainer> systemsContainer = std::make_unique<SystemsContainer>();
+    std::shared_ptr<World> world;
+    std::unique_ptr<RenderService> renderService;
+    std::unique_ptr<SystemsContainer> systemsContainer;
     
     void Awake();
 
