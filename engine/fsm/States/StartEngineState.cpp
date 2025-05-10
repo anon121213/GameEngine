@@ -3,12 +3,14 @@
 
 #include "core/Engine.hpp"
 
-StartEngineState::StartEngineState(StateMachine& fsm, HINSTANCE hInstance) : fsm(fsm), hInstance(hInstance) {
+StartEngineState::StartEngineState(HINSTANCE hinstance) {
+    StartEngineState::hinstance = hinstance;
 }
+
 
 void StartEngineState::Enter() {
     Engine engine;
-    engine.RunLoop(hInstance);
+    engine.RunLoop(hinstance);
 }
 
 void StartEngineState::Exit() {

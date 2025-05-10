@@ -5,11 +5,9 @@
 
 class StartEngineState : public IState  {
 public:
-    explicit StartEngineState(StateMachine& fsm, HINSTANCE hInstance);
+    explicit StartEngineState (HINSTANCE hinstance);
     void Enter() override;
     void Exit() override;
-
 private:
-    StateMachine& fsm;
-    HINSTANCE hInstance;
+    HINSTANCE hinstance;
 };

@@ -6,8 +6,7 @@
 #include "fsm/StateMachine.hpp"
 #include "BootstrapState.hpp"
 #include "StartEngineState.hpp"
-
-BootstrapState::BootstrapState(StateMachine& fsm, HINSTANCE hInstance) : fsm(fsm) {}
+#include "services/ServiceLocator.hpp"
 
 void BootstrapState::Enter() {
     LOG_INFO("BootstrapState: initializing...");
@@ -22,8 +21,9 @@ void BootstrapState::Enter() {
     SetConsoleMode(hOut, dwMode);
     
     Log::SetLevel(Log::Level::Trace);
-    
-    fsm.ChangeState<StartEngineState>();
+
+    auto fsm = ServiceLocator::Get<StateMachine>();
+    fsm->ChangeState<StartEngineState>();
 }
 
 void BootstrapState::Exit() {
