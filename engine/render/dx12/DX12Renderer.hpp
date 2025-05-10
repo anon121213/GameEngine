@@ -1,11 +1,13 @@
 ﻿#pragma once
-#include <windows.h>
-#include <d3d12.h>
-#include <dxgi1_6.h>
-#include <wrl.h>
-
+#include <DirectXMath.h>
+#include "RendererCommandService.hpp"
+#include "RendererSwapChainService.hpp"
+#include "RendererRTVService.hpp"
+#include "RendererPipelineService.hpp"
+#include "RendererRootSignatureService.hpp"
+#include "RendererConstantBufferService.hpp"
+#include "RendererMeshUploadService.hpp"
 #include "components/Transform.hpp"
-#include "render/components/RenderMeshComponent.hpp"
 
 class DX12Renderer {
 public:
@@ -15,47 +17,21 @@ public:
     void BeginFrame();
     void EndFrame();
 
-    void DrawMesh(RenderMeshComponent& mesh, const Transform& transform) const;
-
+    void DrawMesh(RenderMeshComponent& mesh, const Transform& transform);
     void SetViewProjection(const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& proj);
     float GetAspectRatio() const;
+
 private:
-    bool CreateDevice();
-    bool CreateCommandObjects();
-    bool CreateSwapChain(HWND hwnd, int width, int height);
-    bool CreateRenderTargetViews();
-    bool CreateRootSignature();
-    bool CreatePipelineState();
-    bool CreateConstantBuffer();
-
-    void UpdateConstantBuffer(const DirectX::XMMATRIX& model) const;
-    void CreateMeshBuffers(RenderMeshComponent& mesh) const;
-    
-    static constexpr int FrameCount = 2;
-
-    Microsoft::WRL::ComPtr<ID3D12Device> device;
-    Microsoft::WRL::ComPtr<IDXGISwapChain3> swapChain;
-    Microsoft::WRL::ComPtr<ID3D12CommandQueue> commandQueue;
-    Microsoft::WRL::ComPtr<ID3D12DescriptorHeap> rtvHeap;
-    Microsoft::WRL::ComPtr<ID3D12Resource> renderTargets[FrameCount];
-    Microsoft::WRL::ComPtr<ID3D12CommandAllocator> commandAllocator;
-    Microsoft::WRL::ComPtr<ID3D12GraphicsCommandList> commandList;
-    Microsoft::WRL::ComPtr<ID3D12RootSignature> rootSignature;
-    Microsoft::WRL::ComPtr<ID3D12PipelineState> pipelineState;
-
-    UINT rtvDescriptorSize = 0;
-    UINT frameIndex = 0;
-
     int width = 0;
     int height = 0;
+    DirectX::XMMATRIX viewMatrix{};
+    DirectX::XMMATRIX projMatrix{};
 
-    struct alignas(256) MVP {
-        DirectX::XMMATRIX model;
-        DirectX::XMMATRIX view;
-        DirectX::XMMATRIX projection;
-    };
-
-    Microsoft::WRL::ComPtr<ID3D12Resource> constantBuffer;
-    D3D12_GPU_VIRTUAL_ADDRESS cbAddress;
-    MVP mvpData = {};
+    RendererCommandService commandService;
+    RendererSwapChainService swapChainService;
+    RendererRTVService rtvService;
+    RendererRootSignatureService rootSigService;
+    RendererPipelineService pipelineService;
+    RendererConstantBufferService constantBufferService;
+    RendererMeshUploadService meshUploader;
 };
