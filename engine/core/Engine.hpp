@@ -15,21 +15,21 @@ public:
 
 private:
     bool running = true;
-    float fixedTimeStep = 1.0f / 60.0f;
+    float fixedTimeStep = 1.0f / 60.0f;float totalTime = 0.0f;
 
     std::shared_ptr<World> world;
     std::unique_ptr<RenderService> renderService;
     std::unique_ptr<SystemsContainer> systemsContainer;
     
-    void Awake();
+    void Awake() const;
 
-    void Start();
+    void Start() const;
 
-    void FixedUpdate();
+    void FixedUpdate() const;
 
     void Update(float deltaTime);
 
-    void LateUpdate();
+    void LateUpdate() const;
 
     void Shutdown();
 };

@@ -13,6 +13,7 @@ set(OLD_GLOB
   "E:/Projects/GameEngine/engine/fsm/States/StartEngineState.cpp"
   "E:/Projects/GameEngine/engine/render/RenderService.cpp"
   "E:/Projects/GameEngine/engine/render/dx12/DX12Renderer.cpp"
+  "E:/Projects/GameEngine/engine/render/systems/CameraSystem.cpp"
   "E:/Projects/GameEngine/engine/render/systems/RenderSystem.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
@@ -40,8 +41,10 @@ set(OLD_GLOB
   "E:/Projects/GameEngine/engine/fsm/States/BootstrapState.hpp"
   "E:/Projects/GameEngine/engine/fsm/States/StartEngineState.hpp"
   "E:/Projects/GameEngine/engine/render/RenderService.hpp"
+  "E:/Projects/GameEngine/engine/render/components/CameraComponent.hpp"
   "E:/Projects/GameEngine/engine/render/components/RenderMeshComponent.hpp"
   "E:/Projects/GameEngine/engine/render/dx12/DX12Renderer.hpp"
+  "E:/Projects/GameEngine/engine/render/systems/CameraSystem.hpp"
   "E:/Projects/GameEngine/engine/render/systems/RenderSystem.hpp"
   "E:/Projects/GameEngine/engine/services/ServiceLocator.hpp"
   )

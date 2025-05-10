@@ -17,7 +17,9 @@ public:
 
     void DrawMesh(RenderMeshComponent& mesh, const Transform& transform);
     void CreateMeshBuffers(RenderMeshComponent& mesh) const;
-    
+
+    void SetViewProjection(const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& proj);
+    float GetAspectRatio() const;
 private:
     bool CreateDevice();
     bool CreateCommandObjects();
@@ -25,6 +27,7 @@ private:
     bool CreateRenderTargetViews();
     bool CreateRootSignature();
     bool CreatePipelineState();
+    bool CreateConstantBuffer();
 
     static constexpr int FrameCount = 2;
 
@@ -43,4 +46,14 @@ private:
 
     int width = 0;
     int height = 0;
+
+    struct alignas(256) MVP {
+        DirectX::XMMATRIX model;
+        DirectX::XMMATRIX view;
+        DirectX::XMMATRIX projection;
+    };
+
+    Microsoft::WRL::ComPtr<ID3D12Resource> constantBuffer;
+    D3D12_GPU_VIRTUAL_ADDRESS cbAddress;
+    MVP mvpData = {};
 };

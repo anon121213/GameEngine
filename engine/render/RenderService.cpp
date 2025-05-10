@@ -66,13 +66,13 @@ bool RenderService::CreateAppWindow(int width, int height, const std::string& ti
     return true;
 }
 
-void RenderService::BeginFrame() {
+void RenderService::BeginFrame() const {
     if (dxRenderer) {
         dxRenderer->BeginFrame();
     }
 }
 
-void RenderService::EndFrame() {
+void RenderService::EndFrame() const {
     if (dxRenderer) {
         dxRenderer->EndFrame();
     }

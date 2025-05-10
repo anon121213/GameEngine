@@ -13,6 +13,7 @@ bool DX12Renderer::Init(HWND hwnd, int width, int height) {
   if (!CreateSwapChain(hwnd, width, height)) return false;
   if (!CreateRenderTargetViews()) return false;
   if (!CreateRootSignature()) return false;
+  if (!CreateConstantBuffer()) return false;
   if (!CreatePipelineState()) return false;
   return true;
 }
@@ -92,26 +93,33 @@ void DX12Renderer::BeginFrame() {
   commandAllocator->Reset();
   commandList->Reset(commandAllocator.Get(), pipelineState.Get());
 
-  commandList->SetGraphicsRootSignature(rootSignature.Get());
-  commandList->SetPipelineState(pipelineState.Get());
+  mvpData.model = DirectX::XMMatrixIdentity();
+  
+  void* cbPtr = nullptr;
+  D3D12_RANGE readRange{ 0, 0 };
+  constantBuffer->Map(0, &readRange, &cbPtr);
+  memcpy(cbPtr, &mvpData, sizeof(MVP));
+  constantBuffer->Unmap(0, nullptr);
 
-  D3D12_VIEWPORT viewport = {0, 0, static_cast<float>(width), static_cast<float>(height), 0.0f, 1.0f};
-  D3D12_RECT scissorRect = {0, 0, width, height};
-
+  D3D12_VIEWPORT viewport = { 0.0f, 0.0f, static_cast<float>(width), static_cast<float>(height), 0.0f, 1.0f };
+  D3D12_RECT scissorRect = { 0, 0, width, height };
   commandList->RSSetViewports(1, &viewport);
   commandList->RSSetScissorRects(1, &scissorRect);
 
-  CD3DX12_RESOURCE_BARRIER barrier = CD3DX12_RESOURCE_BARRIER::Transition(
-    renderTargets[frameIndex].Get(),
-    D3D12_RESOURCE_STATE_PRESENT,
-    D3D12_RESOURCE_STATE_RENDER_TARGET);
+  auto barrier = CD3DX12_RESOURCE_BARRIER::Transition(
+      renderTargets[frameIndex].Get(),
+      D3D12_RESOURCE_STATE_PRESENT,
+      D3D12_RESOURCE_STATE_RENDER_TARGET);
   commandList->ResourceBarrier(1, &barrier);
 
   CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle(rtvHeap->GetCPUDescriptorHandleForHeapStart(), frameIndex, rtvDescriptorSize);
   commandList->OMSetRenderTargets(1, &rtvHandle, FALSE, nullptr);
 
-  const float clearColor[] = {0.2f, 0.3f, 0.4f, 1.0f};
+  const float clearColor[] = { 0.2f, 0.3f, 0.4f, 1.0f };
   commandList->ClearRenderTargetView(rtvHandle, clearColor, 0, nullptr);
+  commandList->SetGraphicsRootSignature(rootSignature.Get());
+  commandList->SetGraphicsRootConstantBufferView(0, cbAddress);
+  commandList->SetPipelineState(pipelineState.Get());
 }
 
 
@@ -133,7 +141,15 @@ void DX12Renderer::EndFrame() {
 }
 
 void DX12Renderer::DrawMesh(RenderMeshComponent& mesh, const Transform& transform) {
-  CreateMeshBuffers(mesh); // безопасно, если уже инициализировано
+  CreateMeshBuffers(mesh);
+
+  mvpData.model = transform.GetMatrixDX();
+
+  void* cbPtr = nullptr;
+  D3D12_RANGE readRange{0, 0};
+  constantBuffer->Map(0, &readRange, &cbPtr);
+  memcpy(cbPtr, &mvpData, sizeof(MVP));
+  constantBuffer->Unmap(0, nullptr);
 
   commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
   commandList->IASetVertexBuffers(0, 1, &mesh.vertexBufferView);
@@ -202,8 +218,11 @@ void DX12Renderer::CreateMeshBuffers(RenderMeshComponent& mesh) const {
 }
 
 bool DX12Renderer::CreateRootSignature() {
+  CD3DX12_ROOT_PARAMETER rootParam;
+  rootParam.InitAsConstantBufferView(0); 
+
   CD3DX12_ROOT_SIGNATURE_DESC rootSigDesc;
-  rootSigDesc.Init(0, nullptr, 0, nullptr, D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT);
+  rootSigDesc.Init(1, &rootParam, 0, nullptr, D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT);
 
   ComPtr<ID3DBlob> serializedRootSig = nullptr;
   ComPtr<ID3DBlob> errorBlob = nullptr;
@@ -212,9 +231,7 @@ bool DX12Renderer::CreateRootSignature() {
                                            &serializedRootSig, &errorBlob);
 
   if (FAILED(hr)) {
-    if (errorBlob) {
-      OutputDebugStringA((char*)errorBlob->GetBufferPointer());
-    }
+    if (errorBlob) OutputDebugStringA((char*)errorBlob->GetBufferPointer());
     return false;
   }
 
@@ -226,6 +243,7 @@ bool DX12Renderer::CreateRootSignature() {
 
   return true;
 }
+
 
 bool DX12Renderer::CreatePipelineState() {
     ComPtr<ID3DBlob> vsBlob;
@@ -270,4 +288,29 @@ bool DX12Renderer::CreatePipelineState() {
     }
 
     return true;
+}
+
+bool DX12Renderer::CreateConstantBuffer() {
+  CD3DX12_HEAP_PROPERTIES heapProps(D3D12_HEAP_TYPE_UPLOAD);
+  auto cbDesc = CD3DX12_RESOURCE_DESC::Buffer((sizeof(MVP) + 255) & ~255); // 256 byte aligned
+
+  if (FAILED(device->CreateCommittedResource(
+      &heapProps,
+      D3D12_HEAP_FLAG_NONE,
+      &cbDesc,
+      D3D12_RESOURCE_STATE_GENERIC_READ,
+      nullptr,
+      IID_PPV_ARGS(&constantBuffer)
+  ))) return false;
+
+  cbAddress = constantBuffer->GetGPUVirtualAddress();
+  return true;
+}
+
+void DX12Renderer::SetViewProjection(const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& proj) {
+  mvpData.view = view;
+  mvpData.projection = proj;
+}
+float DX12Renderer::GetAspectRatio() const {
+  return static_cast<float>(width) / height;
 }

@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include <DirectXMath.h>
+
 #include "glm/ext/matrix_transform.hpp"
 #include <glm/glm.hpp>
 
@@ -14,5 +16,10 @@ struct Transform {
         matrix = glm::rotate(matrix, rotation.z, glm::vec3(0, 0, 1));
         matrix = glm::scale(matrix, scale);
         return matrix;
+    }
+
+    [[nodiscard]] DirectX::XMMATRIX GetMatrixDX() const {
+        glm::mat4 glmMat = GetMatrix();
+        return DirectX::XMMATRIX(reinterpret_cast<const float*>(&glmMat));
     }
 };

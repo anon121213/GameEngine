@@ -11,8 +11,8 @@ public:
     bool Init(HINSTANCE hInstance, int width, int height, const std::string& title);
     void Shutdown();
 
-    void BeginFrame();
-    void EndFrame();
+    void BeginFrame() const;
+    void EndFrame() const;
 
     HWND GetHWND() const { return hwnd; }
 

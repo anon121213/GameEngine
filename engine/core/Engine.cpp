@@ -5,6 +5,8 @@
 
 #include "components/Transform.hpp"
 #include "render/RenderService.hpp"
+#include "render/components/CameraComponent.hpp"
+#include "render/systems/CameraSystem.hpp"
 #include "render/systems/RenderSystem.hpp"
 #include "services/ServiceLocator.hpp"
 
@@ -18,9 +20,10 @@ Engine::Engine() {
     ServiceLocator::Register<DX12Renderer>(std::make_shared<DX12Renderer>());
 
     systemsContainer->AddSystem<RenderSystem>();
+    systemsContainer->AddSystem<CameraSystem>();
 }
 
-void Engine::Awake() {
+void Engine::Awake() const {
     LOG_INFO("Engine: Awake");
     systemsContainer->OnInitialize();
 
@@ -38,22 +41,36 @@ void Engine::Awake() {
     world->AddComponent<RenderMeshComponent>(triangle, mesh);
     world->AddComponent<Transform>(triangle, {});  // identity transform
 
+// Camera
+    Entity camera = world->CreateEntity();
+    world->AddComponent<Transform>(camera, {
+        .position = {0.0f, 0.0f, -2.0f},
+    });
+    world->AddComponent<CameraComponent>(camera, {});
 }
 
-void Engine::Start() {
+void Engine::Start() const {
     LOG_INFO("Engine: Start");
     systemsContainer->OnStart();
 }
 
-void Engine::FixedUpdate() {
+void Engine::FixedUpdate() const {
     systemsContainer->OnFixedUpdate();
 }
 
 void Engine::Update(float dt) {
+    totalTime += dt;
+
+    for (auto [entity, transform] : world->View<Transform>()) {
+        if (world->HasComponent<CameraComponent>(entity))
+            continue;
+        
+        transform.rotation.y = totalTime;
+    }
     systemsContainer->OnUpdate();
 }
 
-void Engine::LateUpdate() {
+void Engine::LateUpdate() const {
     systemsContainer->OnLateUpdate();
 }
 
