@@ -6,6 +6,7 @@
 #include "components/Transform.hpp"
 #include "render/RenderService.hpp"
 #include "render/components/CameraComponent.hpp"
+#include "render/dx12/services/ModelLoaderService.hpp"
 #include "render/Factories/RenderObjectFactory.hpp"
 #include "render/systems/CameraSystem.hpp"
 #include "render/systems/RenderSystem.hpp"
@@ -19,6 +20,7 @@ Engine::Engine() {
     
     ServiceLocator::Register<World>(world);
     ServiceLocator::Register<DX12Renderer>(std::make_shared<DX12Renderer>());
+    ServiceLocator::Register<ModelLoaderService>(std::make_shared<ModelLoaderService>());
 
     systemsContainer->AddSystem<RenderSystem>();
     systemsContainer->AddSystem<CameraSystem>();
@@ -28,15 +30,20 @@ void Engine::Awake() const {
     LOG_INFO("Engine: Awake");
     systemsContainer->OnInitialize();
 
-    Entity cube = world->CreateEntity();
+    //Entity cube = world->CreateEntity();
 
-    world->AddComponent<RenderMeshComponent>(cube, RenderObjectFactory::CreateCube());
-    world->AddComponent<Transform>(cube, {});  // identity transform
+    //world->AddComponent<RenderMeshComponent>(cube, RenderObjectFactory::CreateCube());
+    //world->AddComponent<Transform>(cube, {});  // identity transform
     
-// Camera
+    // Camera
     Entity camera = world->CreateEntity();
-    world->AddComponent<Transform>(camera, RenderObjectFactory::CreateTransform({0.0f, 0.0f, -2.0f}));
+    world->AddComponent<Transform>(camera, RenderObjectFactory::CreateTransform({0.0f, 3.0f, -50.0f}));
     world->AddComponent<CameraComponent>(camera, RenderObjectFactory::CreateCamera());
+
+    // fbx
+    Entity modelEntity = world->CreateEntity();
+    world->AddComponent<Transform>(modelEntity, RenderObjectFactory::CreateTransform({0, 0, 0}));
+    world->AddComponent<RenderMeshComponent>(modelEntity, RenderObjectFactory::GetFBXMesh("E:\\Projects\\GameEngine\\assets\\uploads_files_2792345_Koenigsegg.fbx"));
 }
 
 void Engine::Start() const {

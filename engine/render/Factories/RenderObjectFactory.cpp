@@ -3,6 +3,12 @@
 #include "components/Transform.hpp"
 #include <glm/glm.hpp>
 
+#include "core/Log.hpp"
+#include "ecs/Entity.hpp"
+#include "ecs/World.hpp"
+#include "render/dx12/services/ModelLoaderService.hpp"
+#include "services/ServiceLocator.hpp"
+
 RenderMeshComponent RenderObjectFactory::CreateTriangle() {
     RenderMeshComponent mesh;
 
@@ -21,10 +27,10 @@ RenderMeshComponent RenderObjectFactory::CreateTriangle() {
 RenderMeshComponent RenderObjectFactory::CreateCube() {
     RenderMeshComponent mesh;
     mesh.vertices = {
-        {{-0.5f, -0.5f, -0.5f}, {1, 0, 0}}, {{0.5f, -0.5f, -0.5f}, {0, 1, 0}},
-        {{0.5f, 0.5f, -0.5f}, {0, 0, 1}},  {{-0.5f, 0.5f, -0.5f}, {1, 1, 0}},
-        {{-0.5f, -0.5f, 0.5f}, {1, 0, 1}}, {{0.5f, -0.5f, 0.5f}, {0, 1, 1}},
-        {{0.5f, 0.5f, 0.5f}, {1, 1, 1}},   {{-0.5f, 0.5f, 0.5f}, {0, 0, 0}}
+        {{-0.5f, -0.5f, -0.5f}, {1, 0, 0}, {1, 1, 1}}, {{0.5f, -0.5f, -0.5f}, {0, 1, 0}, {1, 1, 1}},
+        {{0.5f, 0.5f, -0.5f}, {0, 0, 1}, {1, 1, 1}},  {{-0.5f, 0.5f, -0.5f}, {1, 1, 0}, {1, 1, 1}},
+        {{-0.5f, -0.5f, 0.5f}, {1, 0, 1}, {1, 1, 1}}, {{0.5f, -0.5f, 0.5f}, {0, 1, 1}, {1, 1, 1}},
+        {{0.5f, 0.5f, 0.5f}, {1, 1, 1}, {1, 1, 1}},   {{-0.5f, 0.5f, 0.5f}, {0, 0, 0}, {1, 1, 1}}
     };
 
     mesh.indices = {
@@ -35,7 +41,6 @@ RenderMeshComponent RenderObjectFactory::CreateCube() {
         3,0,4, 4,7,3, 
         1,2,6, 6,5,1   
     };
-
 
     mesh.initialized = false;
     return mesh;
@@ -78,4 +83,28 @@ CameraComponent RenderObjectFactory::CreateCamera(float fov, float nearZ, float 
     cam.farZ = farZ;
     cam.primary = primary;
     return cam;
+}
+
+RenderMeshComponent RenderObjectFactory::GetFBXMesh(const std::string &path) {
+    auto modelLoaderService = GET_SERVICE(ModelLoaderService);
+    auto modelMeshes = modelLoaderService->LoadModel(path);
+
+    RenderMeshComponent combinedMesh;
+    uint32_t indexOffset = 0;
+
+    for (const auto& mesh : modelMeshes) {
+        combinedMesh.vertices.insert(
+            combinedMesh.vertices.end(),
+            mesh.vertices.begin(),
+            mesh.vertices.end()
+        );
+
+        for (uint32_t idx : mesh.indices) {
+            combinedMesh.indices.push_back(idx + indexOffset);
+        }
+
+        indexOffset += static_cast<uint32_t>(mesh.vertices.size());
+    }
+    
+    return combinedMesh;
 }

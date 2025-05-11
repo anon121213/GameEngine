@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include <string>
+
 #include "render/components/RenderMeshComponent.hpp"
 #include "components/Transform.hpp"
 #include "render/components/CameraComponent.hpp"
@@ -19,4 +21,6 @@ public:
                                       float nearZ = 0.1f,
                                       float farZ = 100.0f,
                                       bool primary = true);
+
+  static RenderMeshComponent GetFBXMesh(const std::string& path);
 };

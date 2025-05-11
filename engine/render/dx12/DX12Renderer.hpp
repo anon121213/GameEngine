@@ -1,13 +1,13 @@
 ﻿#pragma once
 #include <DirectXMath.h>
-#include "RendererCommandService.hpp"
-#include "RendererSwapChainService.hpp"
-#include "RendererRTVService.hpp"
-#include "RendererPipelineService.hpp"
-#include "RendererRootSignatureService.hpp"
-#include "RendererConstantBufferService.hpp"
-#include "RendererDepthStencilService.hpp"
-#include "RendererMeshUploadService.hpp"
+#include "services/RendererCommandService.hpp"
+#include "services/RendererSwapChainService.hpp"
+#include "services/RendererRTVService.hpp"
+#include "services/RendererPipelineService.hpp"
+#include "services/RendererRootSignatureService.hpp"
+#include "services/RendererConstantBufferService.hpp"
+#include "services/RendererDepthStencilService.hpp"
+#include "services/RendererMeshUploadService.hpp"
 #include "components/Transform.hpp"
 
 class DX12Renderer {
