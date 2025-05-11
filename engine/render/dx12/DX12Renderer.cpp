@@ -26,7 +26,6 @@ void DX12Renderer::Shutdown() {}
 
 void DX12Renderer::BeginFrame() const {
     commandService.BeginFrame(pipelineService.GetPipelineState());
-    constantBufferService.UpdateModelMatrix(XMMatrixIdentity(), viewMatrix, projMatrix);
 
     commandService.PrepareRenderTarget(
         rtvService.GetRTVHandle(),
@@ -34,11 +33,6 @@ void DX12Renderer::BeginFrame() const {
         rtvService.GetCurrentRenderTarget(),
         width, height,
         depthService.GetDSVHandle());
-
-    commandService.SetGraphicsState(
-        rootSigService.Get(),
-        constantBufferService.GetGPUAddress(),
-        pipelineService.GetPipelineState());
 }
 
 void DX12Renderer::EndFrame() {
@@ -50,7 +44,20 @@ void DX12Renderer::EndFrame() {
 
 void DX12Renderer::DrawMesh(RenderMeshComponent& mesh, const Transform& transform) {
     meshUploader.UploadIfNeeded(commandService.GetDevice(), mesh);
-    constantBufferService.UpdateModelMatrix(transform.GetMatrixDX(), viewMatrix, projMatrix);
+
+    constantBufferService.UpdateModelMatrix(
+        mesh.constantBufferIndex,
+        transform.GetMatrixDX(),
+        viewMatrix,
+        projMatrix
+    );
+
+    commandService.SetGraphicsState(
+        rootSigService.Get(),
+        constantBufferService.GetGPUAddress(mesh.constantBufferIndex),
+        pipelineService.GetPipelineState()
+    );
+
     commandService.DrawMesh(mesh);
 }
 

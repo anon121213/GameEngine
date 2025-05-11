@@ -3,7 +3,6 @@
 #include <d3d12.h>
 #include <d3dcompiler.h>
 #include <wrl.h>
-#include <stdexcept>
 
 using Microsoft::WRL::ComPtr;
 

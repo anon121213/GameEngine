@@ -23,4 +23,5 @@ public:
                                       bool primary = true);
 
   static RenderMeshComponent GetFBXMesh(const std::string& path);
+  static uint32_t GetNextConstantBufferIndex();
 };

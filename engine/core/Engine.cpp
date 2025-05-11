@@ -30,20 +30,23 @@ void Engine::Awake() const {
     LOG_INFO("Engine: Awake");
     systemsContainer->OnInitialize();
 
-    //Entity cube = world->CreateEntity();
-
-    //world->AddComponent<RenderMeshComponent>(cube, RenderObjectFactory::CreateCube());
-    //world->AddComponent<Transform>(cube, {});  // identity transform
-    
     // Camera
     Entity camera = world->CreateEntity();
     world->AddComponent<Transform>(camera, RenderObjectFactory::CreateTransform({0.0f, 3.0f, -50.0f}));
     world->AddComponent<CameraComponent>(camera, RenderObjectFactory::CreateCamera());
+    
+    Entity cube = world->CreateEntity();
+    world->AddComponent<RenderMeshComponent>(cube, RenderObjectFactory::CreateCube());
+    world->AddComponent<Transform>(cube, RenderObjectFactory::CreateTransform({15, 7, 0}, {}, {7, 7, 7}));
+
+    Entity cube2 = world->CreateEntity();
+    world->AddComponent<RenderMeshComponent>(cube2, RenderObjectFactory::CreateCube());
+    world->AddComponent<Transform>(cube2, RenderObjectFactory::CreateTransform({-15, -7, 0}, {}, {9, 9, 9}));  
 
     // fbx
     Entity modelEntity = world->CreateEntity();
-    world->AddComponent<Transform>(modelEntity, RenderObjectFactory::CreateTransform({0, 0, 0}));
     world->AddComponent<RenderMeshComponent>(modelEntity, RenderObjectFactory::GetFBXMesh("E:\\Projects\\GameEngine\\assets\\uploads_files_2792345_Koenigsegg.fbx"));
+    world->AddComponent<Transform>(modelEntity, RenderObjectFactory::CreateTransform({0, 0, 0}, {}, {1, 1, 1}));
 }
 
 void Engine::Start() const {

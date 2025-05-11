@@ -19,6 +19,7 @@ RenderMeshComponent RenderObjectFactory::CreateTriangle() {
     };
 
     mesh.indices = { 0, 1, 2 };
+    mesh.constantBufferIndex = GetNextConstantBufferIndex();
     mesh.initialized = false;
 
     return mesh;
@@ -42,6 +43,7 @@ RenderMeshComponent RenderObjectFactory::CreateCube() {
         1,2,6, 6,5,1   
     };
 
+    mesh.constantBufferIndex = GetNextConstantBufferIndex();
     mesh.initialized = false;
     return mesh;
 }
@@ -62,6 +64,7 @@ RenderMeshComponent RenderObjectFactory::CreatePlane(float size) {
         2, 3, 0
     };
 
+    mesh.constantBufferIndex = GetNextConstantBufferIndex();
     mesh.initialized = false;
     return mesh;
 }
@@ -105,6 +108,13 @@ RenderMeshComponent RenderObjectFactory::GetFBXMesh(const std::string &path) {
 
         indexOffset += static_cast<uint32_t>(mesh.vertices.size());
     }
-    
+
+    combinedMesh.constantBufferIndex = GetNextConstantBufferIndex();
     return combinedMesh;
+}
+
+static uint32_t cbIndexCounter = 0;
+
+uint32_t RenderObjectFactory::GetNextConstantBufferIndex() {
+    return cbIndexCounter++;
 }
