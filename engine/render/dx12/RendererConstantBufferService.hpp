@@ -17,5 +17,5 @@ private:
   } mvp{};
 
   Microsoft::WRL::ComPtr<ID3D12Resource> constantBuffer;
-  D3D12_GPU_VIRTUAL_ADDRESS cbAddress;
+  D3D12_GPU_VIRTUAL_ADDRESS cbAddress = 0;
 };

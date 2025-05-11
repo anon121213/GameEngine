@@ -9,12 +9,12 @@ public:
   bool CreateDevice();
   bool CreateCommandObjects();
 
-  void BeginFrame(ID3D12PipelineState* pipeline);
-  void EndFrame(ID3D12Resource* renderTarget);
+  void BeginFrame(ID3D12PipelineState* pipeline) const;
+  void EndFrame(ID3D12Resource* renderTarget) const;
 
-  void PrepareRenderTarget(D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle, UINT rtvDescriptorSize, ID3D12Resource* renderTarget, int width, int height);
+  void PrepareRenderTarget(D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle,UINT rtvDescriptorSize,ID3D12Resource* currentRenderTarget,int width,int height,D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle) const;
   void SetGraphicsState(ID3D12RootSignature* rootSig, D3D12_GPU_VIRTUAL_ADDRESS cbAddress, ID3D12PipelineState* pso) const;
-  void DrawMesh(const RenderMeshComponent& mesh);
+  void DrawMesh(const RenderMeshComponent& mesh) const;
 
   ID3D12Device* GetDevice() const;
   ID3D12CommandQueue* GetCommandQueue() const;

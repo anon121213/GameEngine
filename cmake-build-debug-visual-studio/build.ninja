@@ -1348,7 +1348,7 @@ build engine\CMakeFiles\engine.dir\fsm\States\StartEngineState.cpp.obj: CXX_COMP
   TARGET_COMPILE_PDB = engine\CMakeFiles\engine.dir\engine.pdb
   TARGET_PDB = engine\engine.pdb
 
-build engine\CMakeFiles\engine.dir\render\Factories\CameraFactory.cpp.obj: CXX_COMPILER__engine_unscanned_Debug E$:\Projects\GameEngine\engine\render\Factories\CameraFactory.cpp || cmake_object_order_depends_target_engine
+build engine\CMakeFiles\engine.dir\render\Factories\RenderObjectFactory.cpp.obj: CXX_COMPILER__engine_unscanned_Debug E$:\Projects\GameEngine\engine\render\Factories\RenderObjectFactory.cpp || cmake_object_order_depends_target_engine
   DEFINES = -DGLM_ENABLE_EXPERIMENTAL
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd
   INCLUDES = -IE:\Projects\GameEngine\engine -IE:\Projects\GameEngine\external\glad\include -IE:\Projects\GameEngine\external\glfw\include -IE:\Projects\GameEngine\external\DirectX-Headers\include\directx -IE:\Projects\GameEngine\external\glm
@@ -1375,15 +1375,6 @@ build engine\CMakeFiles\engine.dir\render\dx12\DX12Renderer.cpp.obj: CXX_COMPILE
   TARGET_COMPILE_PDB = engine\CMakeFiles\engine.dir\engine.pdb
   TARGET_PDB = engine\engine.pdb
 
-build engine\CMakeFiles\engine.dir\render\dx12\RenderObjectFactory.cpp.obj: CXX_COMPILER__engine_unscanned_Debug E$:\Projects\GameEngine\engine\render\dx12\RenderObjectFactory.cpp || cmake_object_order_depends_target_engine
-  DEFINES = -DGLM_ENABLE_EXPERIMENTAL
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd
-  INCLUDES = -IE:\Projects\GameEngine\engine -IE:\Projects\GameEngine\external\glad\include -IE:\Projects\GameEngine\external\glfw\include -IE:\Projects\GameEngine\external\DirectX-Headers\include\directx -IE:\Projects\GameEngine\external\glm
-  OBJECT_DIR = engine\CMakeFiles\engine.dir
-  OBJECT_FILE_DIR = engine\CMakeFiles\engine.dir\render\dx12
-  TARGET_COMPILE_PDB = engine\CMakeFiles\engine.dir\engine.pdb
-  TARGET_PDB = engine\engine.pdb
-
 build engine\CMakeFiles\engine.dir\render\dx12\RendererCommandService.cpp.obj: CXX_COMPILER__engine_unscanned_Debug E$:\Projects\GameEngine\engine\render\dx12\RendererCommandService.cpp || cmake_object_order_depends_target_engine
   DEFINES = -DGLM_ENABLE_EXPERIMENTAL
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd
@@ -1394,6 +1385,15 @@ build engine\CMakeFiles\engine.dir\render\dx12\RendererCommandService.cpp.obj: C
   TARGET_PDB = engine\engine.pdb
 
 build engine\CMakeFiles\engine.dir\render\dx12\RendererConstantBufferService.cpp.obj: CXX_COMPILER__engine_unscanned_Debug E$:\Projects\GameEngine\engine\render\dx12\RendererConstantBufferService.cpp || cmake_object_order_depends_target_engine
+  DEFINES = -DGLM_ENABLE_EXPERIMENTAL
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd
+  INCLUDES = -IE:\Projects\GameEngine\engine -IE:\Projects\GameEngine\external\glad\include -IE:\Projects\GameEngine\external\glfw\include -IE:\Projects\GameEngine\external\DirectX-Headers\include\directx -IE:\Projects\GameEngine\external\glm
+  OBJECT_DIR = engine\CMakeFiles\engine.dir
+  OBJECT_FILE_DIR = engine\CMakeFiles\engine.dir\render\dx12
+  TARGET_COMPILE_PDB = engine\CMakeFiles\engine.dir\engine.pdb
+  TARGET_PDB = engine\engine.pdb
+
+build engine\CMakeFiles\engine.dir\render\dx12\RendererDepthStencilService.cpp.obj: CXX_COMPILER__engine_unscanned_Debug E$:\Projects\GameEngine\engine\render\dx12\RendererDepthStencilService.cpp || cmake_object_order_depends_target_engine
   DEFINES = -DGLM_ENABLE_EXPERIMENTAL
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd
   INCLUDES = -IE:\Projects\GameEngine\engine -IE:\Projects\GameEngine\external\glad\include -IE:\Projects\GameEngine\external\glfw\include -IE:\Projects\GameEngine\external\DirectX-Headers\include\directx -IE:\Projects\GameEngine\external\glm
@@ -1482,7 +1482,7 @@ build engine\CMakeFiles\engine.dir\__\external\glad\src\glad.c.obj: C_COMPILER__
 #############################################
 # Link the static library engine\engine.lib
 
-build engine\engine.lib: CXX_STATIC_LIBRARY_LINKER__engine_Debug engine\CMakeFiles\engine.dir\core\Engine.cpp.obj engine\CMakeFiles\engine.dir\core\Window.cpp.obj engine\CMakeFiles\engine.dir\core\log.cpp.obj engine\CMakeFiles\engine.dir\ecs\SystemsContainer.cpp.obj engine\CMakeFiles\engine.dir\fsm\States\BootstrapState.cpp.obj engine\CMakeFiles\engine.dir\fsm\States\StartEngineState.cpp.obj engine\CMakeFiles\engine.dir\render\Factories\CameraFactory.cpp.obj engine\CMakeFiles\engine.dir\render\RenderService.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\DX12Renderer.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RenderObjectFactory.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RendererCommandService.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RendererConstantBufferService.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RendererMeshUploadService.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RendererPipelineService.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RendererRTVService.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RendererRootSignatureService.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RendererSwapChainService.cpp.obj engine\CMakeFiles\engine.dir\render\systems\CameraSystem.cpp.obj engine\CMakeFiles\engine.dir\render\systems\RenderSystem.cpp.obj engine\CMakeFiles\engine.dir\__\external\glad\src\glad.c.obj || external\glfw\src\glfw3.lib external\glm\glm\glm.lib
+build engine\engine.lib: CXX_STATIC_LIBRARY_LINKER__engine_Debug engine\CMakeFiles\engine.dir\core\Engine.cpp.obj engine\CMakeFiles\engine.dir\core\Window.cpp.obj engine\CMakeFiles\engine.dir\core\log.cpp.obj engine\CMakeFiles\engine.dir\ecs\SystemsContainer.cpp.obj engine\CMakeFiles\engine.dir\fsm\States\BootstrapState.cpp.obj engine\CMakeFiles\engine.dir\fsm\States\StartEngineState.cpp.obj engine\CMakeFiles\engine.dir\render\Factories\RenderObjectFactory.cpp.obj engine\CMakeFiles\engine.dir\render\RenderService.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\DX12Renderer.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RendererCommandService.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RendererConstantBufferService.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RendererDepthStencilService.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RendererMeshUploadService.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RendererPipelineService.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RendererRTVService.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RendererRootSignatureService.cpp.obj engine\CMakeFiles\engine.dir\render\dx12\RendererSwapChainService.cpp.obj engine\CMakeFiles\engine.dir\render\systems\CameraSystem.cpp.obj engine\CMakeFiles\engine.dir\render\systems\RenderSystem.cpp.obj engine\CMakeFiles\engine.dir\__\external\glad\src\glad.c.obj || external\glfw\src\glfw3.lib external\glm\glm\glm.lib
   LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd
   LINK_FLAGS = /machine:x64
   OBJECT_DIR = engine\CMakeFiles\engine.dir

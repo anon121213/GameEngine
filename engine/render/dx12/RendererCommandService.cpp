@@ -16,24 +16,37 @@ bool RendererCommandService::CreateCommandObjects() {
     return true;
 }
 
-void RendererCommandService::BeginFrame(ID3D12PipelineState* pipelineState) {
+void RendererCommandService::BeginFrame(ID3D12PipelineState* pipelineState) const {
     commandAllocator->Reset();
     commandList->Reset(commandAllocator.Get(), pipelineState);
 }
 
-void RendererCommandService::PrepareRenderTarget(D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle, UINT rtvDescriptorSize, ID3D12Resource* renderTarget, int width, int height) {
-    D3D12_VIEWPORT viewport = {0.0f, 0.0f, static_cast<float>(width), static_cast<float>(height), 0.0f, 1.0f};
-    D3D12_RECT scissorRect = {0, 0, width, height};
+void RendererCommandService::PrepareRenderTarget(
+    D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle,
+    UINT rtvDescriptorSize,
+    ID3D12Resource* currentRenderTarget,
+    int width,
+    int height,
+    D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle) const
+{
+    auto barrier = CD3DX12_RESOURCE_BARRIER::Transition(
+        currentRenderTarget,
+        D3D12_RESOURCE_STATE_PRESENT,
+        D3D12_RESOURCE_STATE_RENDER_TARGET);
+    commandList->ResourceBarrier(1, &barrier);
+
+    D3D12_VIEWPORT viewport = { 0.0f, 0.0f, static_cast<float>(width), static_cast<float>(height), 0.0f, 1.0f };
+    D3D12_RECT scissorRect = { 0, 0, width, height };
     commandList->RSSetViewports(1, &viewport);
     commandList->RSSetScissorRects(1, &scissorRect);
 
-    auto barrier = CD3DX12_RESOURCE_BARRIER::Transition(renderTarget, D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET);
-    commandList->ResourceBarrier(1, &barrier);
+    commandList->OMSetRenderTargets(1, &rtvHandle, FALSE, &dsvHandle);
 
-    commandList->OMSetRenderTargets(1, &rtvHandle, FALSE, nullptr);
-    const float clearColor[] = {0.2f, 0.3f, 0.4f, 1.0f};
+    const float clearColor[] = { 0.2f, 0.3f, 0.4f, 1.0f };
     commandList->ClearRenderTargetView(rtvHandle, clearColor, 0, nullptr);
+    commandList->ClearDepthStencilView(dsvHandle, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
 }
+
 
 void RendererCommandService::SetGraphicsState(ID3D12RootSignature* rootSignature, UINT64 cbAddress, ID3D12PipelineState* pipelineState) const {
     commandList->SetGraphicsRootSignature(rootSignature);
@@ -42,7 +55,7 @@ void RendererCommandService::SetGraphicsState(ID3D12RootSignature* rootSignature
 }
 
 
-void RendererCommandService::EndFrame(ID3D12Resource* renderTarget) {
+void RendererCommandService::EndFrame(ID3D12Resource* renderTarget) const {
     auto barrier = CD3DX12_RESOURCE_BARRIER::Transition(renderTarget, D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
     commandList->ResourceBarrier(1, &barrier);
     commandList->Close();
@@ -50,7 +63,7 @@ void RendererCommandService::EndFrame(ID3D12Resource* renderTarget) {
     commandQueue->ExecuteCommandLists(1, lists);
 }
 
-void RendererCommandService::DrawMesh(const RenderMeshComponent& mesh) {
+void RendererCommandService::DrawMesh(const RenderMeshComponent& mesh) const {
     commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
     commandList->IASetVertexBuffers(0, 1, &mesh.vertexBufferView);
 

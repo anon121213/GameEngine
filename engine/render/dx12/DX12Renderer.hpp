@@ -6,6 +6,7 @@
 #include "RendererPipelineService.hpp"
 #include "RendererRootSignatureService.hpp"
 #include "RendererConstantBufferService.hpp"
+#include "RendererDepthStencilService.hpp"
 #include "RendererMeshUploadService.hpp"
 #include "components/Transform.hpp"
 
@@ -14,7 +15,7 @@ public:
     bool Init(HWND hwnd, int width, int height);
     void Shutdown();
 
-    void BeginFrame();
+    void BeginFrame() const;
     void EndFrame();
 
     void DrawMesh(RenderMeshComponent& mesh, const Transform& transform);
@@ -34,4 +35,5 @@ private:
     RendererPipelineService pipelineService;
     RendererConstantBufferService constantBufferService;
     RendererMeshUploadService meshUploader;
+    RendererDepthStencilService depthService;
 };

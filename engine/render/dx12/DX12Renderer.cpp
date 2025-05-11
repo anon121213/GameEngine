@@ -11,6 +11,7 @@ bool DX12Renderer::Init(HWND hwnd, int width, int height) {
     if (!commandService.CreateCommandObjects()) return false;
     if (!swapChainService.Create(commandService.GetCommandQueue(), hwnd, width, height)) return false;
     if (!rtvService.Create(commandService.GetDevice(), swapChainService.GetSwapChain())) return false;
+    if (!depthService.Create(commandService.GetDevice(), width, height)) return false;
     if (!rootSigService.Create(commandService.GetDevice())) return false;
     if (!constantBufferService.Create(commandService.GetDevice())) return false;
     if (!pipelineService.Create(commandService.GetDevice(), rootSigService.Get())) return false;
@@ -23,7 +24,7 @@ bool DX12Renderer::Init(HWND hwnd, int width, int height) {
 
 void DX12Renderer::Shutdown() {}
 
-void DX12Renderer::BeginFrame() {
+void DX12Renderer::BeginFrame() const {
     commandService.BeginFrame(pipelineService.GetPipelineState());
     constantBufferService.UpdateModelMatrix(XMMatrixIdentity(), viewMatrix, projMatrix);
 
@@ -31,7 +32,8 @@ void DX12Renderer::BeginFrame() {
         rtvService.GetRTVHandle(),
         rtvService.GetDescriptorSize(),
         rtvService.GetCurrentRenderTarget(),
-        width, height);
+        width, height,
+        depthService.GetDSVHandle());
 
     commandService.SetGraphicsState(
         rootSigService.Get(),

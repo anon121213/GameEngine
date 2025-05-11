@@ -6,6 +6,7 @@
 #include "components/Transform.hpp"
 #include "render/RenderService.hpp"
 #include "render/components/CameraComponent.hpp"
+#include "render/Factories/RenderObjectFactory.hpp"
 #include "render/systems/CameraSystem.hpp"
 #include "render/systems/RenderSystem.hpp"
 #include "services/ServiceLocator.hpp"
@@ -27,26 +28,15 @@ void Engine::Awake() const {
     LOG_INFO("Engine: Awake");
     systemsContainer->OnInitialize();
 
-    Entity triangle = world->CreateEntity();
+    Entity cube = world->CreateEntity();
 
-    RenderMeshComponent mesh;
-    mesh.vertices = {
-        {{0.0f, 0.5f, 0.0f}, {1.0f, 0.0f, 0.0f}},   // top - red
-        {{0.5f, -0.5f, 0.0f}, {0.0f, 1.0f, 0.0f}},  // right - green
-        {{-0.5f, -0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}}, // left - blue
-    };
-
-    mesh.indices = { 0, 1, 2 };
-
-    world->AddComponent<RenderMeshComponent>(triangle, mesh);
-    world->AddComponent<Transform>(triangle, {});  // identity transform
-
+    world->AddComponent<RenderMeshComponent>(cube, RenderObjectFactory::CreateCube());
+    world->AddComponent<Transform>(cube, {});  // identity transform
+    
 // Camera
     Entity camera = world->CreateEntity();
-    world->AddComponent<Transform>(camera, {
-        .position = {0.0f, 0.0f, -2.0f},
-    });
-    world->AddComponent<CameraComponent>(camera, {.primary = true});
+    world->AddComponent<Transform>(camera, RenderObjectFactory::CreateTransform({0.0f, 0.0f, -2.0f}));
+    world->AddComponent<CameraComponent>(camera, RenderObjectFactory::CreateCamera());
 }
 
 void Engine::Start() const {
