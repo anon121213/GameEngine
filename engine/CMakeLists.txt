@@ -19,17 +19,18 @@ target_include_directories(engine
 target_sources(engine PRIVATE
         ${CMAKE_SOURCE_DIR}/external/glad/src/glad.c
 )
-set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/external/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
 
-# Required packages
+# === Required packages ===
 find_package(assimp CONFIG REQUIRED)
+find_package(yaml-cpp CONFIG REQUIRED)
 
-# Link libraries
+# === Link libraries ===
 target_link_libraries(engine
         PRIVATE
         glfw
         glm
         assimp::assimp
+        yaml-cpp::yaml-cpp
         d3d12
         dxgi
         d3dcompiler

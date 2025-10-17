@@ -4,7 +4,7 @@
 #include "BaseStorage.hpp"
 
 template<typename T>
-class ComponentStorage : public BaseStorage {
+class ComponentStorage final : public BaseStorage {
 public:
     using MapType = std::unordered_map<Entity, T>;
 
@@ -16,7 +16,7 @@ public:
         return components.at(entity);
     }
 
-    bool Has(Entity entity) const {
+    [[nodiscard]] bool Has(Entity entity) const {
         return components.find(entity) != components.end();
     }
 

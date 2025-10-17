@@ -2,6 +2,9 @@
 #include "RendererCommandService.hpp"
 #include "render/components/RenderMeshComponent.hpp"
 #include <d3dx12.h>
+#include <render/components/MeshAsset.hpp>
+
+#include "core/Log.hpp"
 
 bool RendererCommandService::CreateDevice() {
     return SUCCEEDED(D3D12CreateDevice(nullptr, D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(&device)));
@@ -63,17 +66,28 @@ void RendererCommandService::EndFrame(ID3D12Resource* renderTarget) const {
     commandQueue->ExecuteCommandLists(1, lists);
 }
 
-void RendererCommandService::DrawMesh(const RenderMeshComponent& mesh) const {
+void RendererCommandService::DrawMesh(const SubMesh& subMesh, const MeshAsset& meshAsset) const {
     commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-    commandList->IASetVertexBuffers(0, 1, &mesh.vertexBufferView);
+    commandList->IASetVertexBuffers(0, 1, &subMesh.vertexBufferView);
 
-    if (!mesh.indices.empty()) {
-        commandList->IASetIndexBuffer(&mesh.indexBufferView);
-        commandList->DrawIndexedInstanced(static_cast<UINT>(mesh.indices.size()), 1, 0, 0, 0);
+    if (!meshAsset.indices.empty()) {
+        commandList->IASetIndexBuffer(&subMesh.indexBufferView);
+        const UINT indexCount = static_cast<UINT>(meshAsset.indices.size());
+        if (indexCount == 0) {
+            LOG_ERROR("[Cmd] indexCount == 0 for IB draw, skip.");
+            return;
+        }
+        commandList->DrawIndexedInstanced(indexCount, 1, 0, 0, 0);
     } else {
-        commandList->DrawInstanced(static_cast<UINT>(mesh.vertices.size()), 1, 0, 0);
+        const UINT vertexCount = static_cast<UINT>(meshAsset.vertices.size());
+        if (vertexCount == 0) {
+            LOG_ERROR("[Cmd] vertexCount == 0 for non-indexed draw, skip.");
+            return;
+        }
+        commandList->DrawInstanced(vertexCount, 1, 0, 0);
     }
 }
+
 
 ID3D12Device* RendererCommandService::GetDevice() const { return device.Get(); }
 ID3D12CommandQueue* RendererCommandService::GetCommandQueue() const { return commandQueue.Get(); }

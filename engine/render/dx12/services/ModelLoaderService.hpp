@@ -1,12 +1,20 @@
 ﻿#pragma once
 #include <string>
 #include <vector>
-#include <memory>
+#include <glm/mat4x4.hpp>
+#include "render/components/MeshAsset.hpp"
 
-#include "render/components/RenderMeshComponent.hpp"
+struct aiNode;
+struct aiScene;
 
 class ModelLoaderService {
 public:
-  // Загружает модель и возвращает один или несколько RenderMeshComponent
-  static std::vector<RenderMeshComponent> LoadModel(const std::string& path);
+  std::vector<MeshAsset> LoadModel(const std::string& path);
+
+private:
+  void ProcessNode(aiNode* node,
+                   const aiScene* scene,
+                   std::vector<MeshAsset>& meshes,
+                   const glm::mat4& parentTransform,
+                   const std::string& modelPath);
 };

@@ -21,6 +21,7 @@ Engine::Engine() {
     ServiceLocator::Register<World>(world);
     ServiceLocator::Register<DX12Renderer>(std::make_shared<DX12Renderer>());
     ServiceLocator::Register<ModelLoaderService>(std::make_shared<ModelLoaderService>());
+    ServiceLocator::Register<MeshManager>(std::make_shared<MeshManager>());
 
     systemsContainer->AddSystem<RenderSystem>();
     systemsContainer->AddSystem<CameraSystem>();
@@ -35,18 +36,17 @@ void Engine::Awake() const {
     world->AddComponent<Transform>(camera, RenderObjectFactory::CreateTransform({0.0f, 3.0f, -50.0f}));
     world->AddComponent<CameraComponent>(camera, RenderObjectFactory::CreateCamera());
     
-    Entity cube = world->CreateEntity();
+    /*Entity cube = world->CreateEntity();
     world->AddComponent<RenderMeshComponent>(cube, RenderObjectFactory::CreateCube());
     world->AddComponent<Transform>(cube, RenderObjectFactory::CreateTransform({15, 7, 0}, {}, {7, 7, 7}));
 
     Entity cube2 = world->CreateEntity();
     world->AddComponent<RenderMeshComponent>(cube2, RenderObjectFactory::CreateCube());
-    world->AddComponent<Transform>(cube2, RenderObjectFactory::CreateTransform({-15, -7, 0}, {}, {9, 9, 9}));  
+    world->AddComponent<Transform>(cube2, RenderObjectFactory::CreateTransform({-15, -7, 0}, {}, {9, 9, 9}));  */
 
-    // fbx
-    Entity modelEntity = world->CreateEntity();
-    world->AddComponent<RenderMeshComponent>(modelEntity, RenderObjectFactory::GetFBXMesh("E:\\Projects\\GameEngine\\assets\\uploads_files_2792345_Koenigsegg.fbx"));
-    world->AddComponent<Transform>(modelEntity, RenderObjectFactory::CreateTransform({0, 0, 0}, {}, {1, 1, 1}));
+    Entity car = world->CreateEntity();
+    world->AddComponent<RenderMeshComponent>(car, RenderObjectFactory::GetFBXMesh("E:\\Projects\\GameEngine\\assets\\uploads_files_2792345_Koenigsegg.fbx"));
+    world->AddComponent<Transform>(car, RenderObjectFactory::CreateTransform({0,0,0}, {},  { 0.01f, 0.01f, 0.01f }));
 }
 
 void Engine::Start() const {

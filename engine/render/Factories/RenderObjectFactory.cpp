@@ -1,77 +1,120 @@
 ﻿#include "RenderObjectFactory.hpp"
 #include "render/components/RenderMeshComponent.hpp"
 #include "components/Transform.hpp"
-#include <glm/glm.hpp>
-
+#include "render/components/MeshAsset.hpp"
+#include "assets/MeshManager.hpp"
 #include "core/Log.hpp"
-#include "ecs/Entity.hpp"
-#include "ecs/World.hpp"
+#include <glm/glm.hpp>
 #include "render/dx12/services/ModelLoaderService.hpp"
 #include "services/ServiceLocator.hpp"
 
-RenderMeshComponent RenderObjectFactory::CreateTriangle() {
-    RenderMeshComponent mesh;
+// ====================================================
+//  ПРИМИТИВЫ
+// ====================================================
 
-    mesh.vertices = {
+RenderMeshComponent RenderObjectFactory::CreateTriangle()
+{
+    MeshAsset asset;
+    asset.path = "Primitive:Triangle";
+
+    asset.vertices = {
         {{0.0f,  0.5f, 0.0f}, {1.0f, 0.0f, 0.0f}},
         {{0.5f, -0.5f, 0.0f}, {0.0f, 1.0f, 0.0f}},
         {{-0.5f, -0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}}
     };
 
-    mesh.indices = { 0, 1, 2 };
-    mesh.constantBufferIndex = GetNextConstantBufferIndex();
-    mesh.initialized = false;
+    asset.indices = { 0, 1, 2 };
 
+    // Регистрируем меш
+    ServiceLocator::Get<MeshManager>()->RegisterPrimitive(asset);
+
+    // Создаём компонент
+    RenderMeshComponent mesh{};
+    mesh.constantBufferIndex = GetNextConstantBufferIndex();
+
+    SubMesh sub{};
+    sub.meshPath = asset.path;
+    sub.initialized = false;
+
+    mesh.subMeshes.push_back(std::move(sub));
     return mesh;
 }
 
-RenderMeshComponent RenderObjectFactory::CreateCube() {
-    RenderMeshComponent mesh;
-    mesh.vertices = {
-        {{-0.5f, -0.5f, -0.5f}, {1, 0, 0}, {1, 1, 1}}, {{0.5f, -0.5f, -0.5f}, {0, 1, 0}, {1, 1, 1}},
-        {{0.5f, 0.5f, -0.5f}, {0, 0, 1}, {1, 1, 1}},  {{-0.5f, 0.5f, -0.5f}, {1, 1, 0}, {1, 1, 1}},
-        {{-0.5f, -0.5f, 0.5f}, {1, 0, 1}, {1, 1, 1}}, {{0.5f, -0.5f, 0.5f}, {0, 1, 1}, {1, 1, 1}},
-        {{0.5f, 0.5f, 0.5f}, {1, 1, 1}, {1, 1, 1}},   {{-0.5f, 0.5f, 0.5f}, {0, 0, 0}, {1, 1, 1}}
+RenderMeshComponent RenderObjectFactory::CreateCube()
+{
+    MeshAsset asset;
+    asset.path = "Primitive:Cube";
+
+    asset.vertices = {
+        {{-0.5f, -0.5f, -0.5f}, {1, 0, 0}},
+        {{0.5f, -0.5f, -0.5f},  {0, 1, 0}},
+        {{0.5f,  0.5f, -0.5f},  {0, 0, 1}},
+        {{-0.5f,  0.5f, -0.5f}, {1, 1, 0}},
+        {{-0.5f, -0.5f,  0.5f}, {1, 0, 1}},
+        {{0.5f, -0.5f,  0.5f},  {0, 1, 1}},
+        {{0.5f,  0.5f,  0.5f},  {1, 1, 1}},
+        {{-0.5f,  0.5f,  0.5f}, {0, 0, 0}}
     };
 
-    mesh.indices = {
-        2,1,0, 0,3,2, 
-        4,5,6, 6,7,4,  
-        1,5,4, 4,0,1, 
-        6,2,3, 3,7,6,  
-        3,0,4, 4,7,3, 
-        1,2,6, 6,5,1   
+    asset.indices = {
+        2,1,0, 0,3,2,
+        4,5,6, 6,7,4,
+        1,5,4, 4,0,1,
+        6,2,3, 3,7,6,
+        3,0,4, 4,7,3,
+        1,2,6, 6,5,1
     };
 
+    ServiceLocator::Get<MeshManager>()->RegisterPrimitive(asset);
+
+    RenderMeshComponent mesh{};
     mesh.constantBufferIndex = GetNextConstantBufferIndex();
-    mesh.initialized = false;
+
+    SubMesh sub{};
+    sub.meshPath = asset.path;
+    sub.initialized = false;
+
+    mesh.subMeshes.push_back(std::move(sub));
     return mesh;
 }
 
-RenderMeshComponent RenderObjectFactory::CreatePlane(float size) {
-    RenderMeshComponent mesh;
+RenderMeshComponent RenderObjectFactory::CreatePlane(float size)
+{
+    MeshAsset asset;
+    asset.path = "Primitive:Plane";
+
     float hs = size / 2.0f;
 
-    mesh.vertices = {
+    asset.vertices = {
         {{-hs, 0.0f, -hs}, {1, 0, 0}},
-        {{hs, 0.0f, -hs}, {0, 1, 0}},
-        {{hs, 0.0f, hs}, {0, 0, 1}},
-        {{-hs, 0.0f, hs}, {1, 1, 0}}
+        {{ hs, 0.0f, -hs}, {0, 1, 0}},
+        {{ hs, 0.0f,  hs}, {0, 0, 1}},
+        {{-hs, 0.0f,  hs}, {1, 1, 0}}
     };
 
-    mesh.indices = {
-        0, 1, 2,
-        2, 3, 0
-    };
+    asset.indices = { 0, 1, 2, 2, 3, 0 };
 
+    ServiceLocator::Get<MeshManager>()->RegisterPrimitive(asset);
+
+    RenderMeshComponent mesh{};
     mesh.constantBufferIndex = GetNextConstantBufferIndex();
-    mesh.initialized = false;
+
+    SubMesh sub{};
+    sub.meshPath = asset.path;
+    sub.initialized = false;
+
+    mesh.subMeshes.push_back(std::move(sub));
     return mesh;
 }
+
+// ====================================================
+//  ПРОЧЕЕ
+// ====================================================
 
 Transform RenderObjectFactory::CreateTransform(const glm::vec3& position,
                                                const glm::vec3& rotation,
-                                               const glm::vec3& scale) {
+                                               const glm::vec3& scale)
+{
     Transform transform;
     transform.position = position;
     transform.rotation = rotation;
@@ -79,7 +122,8 @@ Transform RenderObjectFactory::CreateTransform(const glm::vec3& position,
     return transform;
 }
 
-CameraComponent RenderObjectFactory::CreateCamera(float fov, float nearZ, float farZ, bool primary) {
+CameraComponent RenderObjectFactory::CreateCamera(float fov, float nearZ, float farZ, bool primary)
+{
     CameraComponent cam;
     cam.fov = fov;
     cam.nearZ = nearZ;
@@ -88,33 +132,50 @@ CameraComponent RenderObjectFactory::CreateCamera(float fov, float nearZ, float 
     return cam;
 }
 
-RenderMeshComponent RenderObjectFactory::GetFBXMesh(const std::string &path) {
-    auto modelLoaderService = GET_SERVICE(ModelLoaderService);
-    auto modelMeshes = modelLoaderService->LoadModel(path);
+// ====================================================
+//  FBX / ASSIMP
+// ====================================================
 
-    RenderMeshComponent combinedMesh;
-    uint32_t indexOffset = 0;
+RenderMeshComponent RenderObjectFactory::GetFBXMesh(const std::string& path)
+{
+    auto modelLoader = ServiceLocator::Get<ModelLoaderService>();
+    std::vector<MeshAsset> meshes = modelLoader->LoadModel(path);
 
-    for (const auto& mesh : modelMeshes) {
-        combinedMesh.vertices.insert(
-            combinedMesh.vertices.end(),
-            mesh.vertices.begin(),
-            mesh.vertices.end()
-        );
+    RenderMeshComponent renderMesh{};
+    renderMesh.constantBufferIndex = GetNextConstantBufferIndex();
 
-        for (uint32_t idx : mesh.indices) {
-            combinedMesh.indices.push_back(idx + indexOffset);
-        }
-
-        indexOffset += static_cast<uint32_t>(mesh.vertices.size());
+    if (meshes.empty())
+    {
+        LOG_ERROR("[RenderObjectFactory] model '{}' contains NO meshes!", path);
+        return renderMesh;
     }
 
-    combinedMesh.constantBufferIndex = GetNextConstantBufferIndex();
-    return combinedMesh;
+    auto meshManager = ServiceLocator::Get<MeshManager>();
+    for (auto& asset : meshes)
+    {
+        meshManager->RegisterPrimitive(asset);
+
+        SubMesh sub{};
+        sub.meshPath = asset.path;    
+        sub.materialPath = "";        
+        sub.initialized = false;
+
+        renderMesh.subMeshes.emplace_back(std::move(sub));
+        LOG_INFO("[RenderObjectFactory] added submesh key='{}' to RenderMesh", sub.meshPath);
+    }
+
+    LOG_INFO("[RenderObjectFactory] FBX '{}' -> {} submeshes (CB index = {})",
+             path, renderMesh.subMeshes.size(), renderMesh.constantBufferIndex);
+
+    return renderMesh;
 }
 
-static uint32_t cbIndexCounter = 0;
+// ====================================================
+//  BUFFER INDEX
+// ====================================================
 
-uint32_t RenderObjectFactory::GetNextConstantBufferIndex() {
+static uint32_t cbIndexCounter = 0;
+uint32_t RenderObjectFactory::GetNextConstantBufferIndex()
+{
     return cbIndexCounter++;
 }

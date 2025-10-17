@@ -18,7 +18,7 @@ public:
     void BeginFrame() const;
     void EndFrame();
 
-    void DrawMesh(RenderMeshComponent& mesh, const Transform& transform);
+    void DrawMesh(RenderMeshComponent& mesh, const Transform& transform) const;
     void SetViewProjection(const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& proj);
     float GetAspectRatio() const;
 

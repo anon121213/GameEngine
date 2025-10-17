@@ -24,15 +24,14 @@ public:
     }
 
     template<typename T>
-    bool HasComponent(Entity entity) const {
+    [[nodiscard]] bool HasComponent(Entity entity) const {
         auto storage = GetStorage<T>();
         return storage && storage->Has(entity);
     }
 
     template<typename T>
     void RemoveComponent(Entity entity) {
-        auto storage = GetStorage<T>();
-        if (storage) storage->Remove(entity);
+        if (auto storage = GetStorage<T>()) storage->Remove(entity);
     }
 
     template<typename... Ts>
@@ -46,7 +45,7 @@ private:
 
     template<typename T>
     ComponentStorage<T>* GetStorage() const {
-        auto it = storages.find(std::type_index(typeid(T)));
+        const auto it = storages.find(std::type_index(typeid(T)));
         if (it == storages.end()) return nullptr;
         return static_cast<ComponentStorage<T>*>(it->second.get());
     }

@@ -12,7 +12,7 @@ void BootstrapState::Enter() {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 
-    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     DWORD dwMode = 0;
     GetConsoleMode(hOut, &dwMode);
     dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
@@ -20,7 +20,7 @@ void BootstrapState::Enter() {
     
     Log::SetLevel(Log::Level::Trace);
 
-    auto fsm = ServiceLocator::Get<StateMachine>();
+    const auto fsm = ServiceLocator::Get<StateMachine>();
     fsm->ChangeState<StartEngineState>();
 }
 

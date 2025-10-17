@@ -4,6 +4,8 @@
 
 #include "render/components/RenderMeshComponent.hpp"
 
+struct MeshAsset;
+
 class RendererCommandService {
 public:
   bool CreateDevice();
@@ -14,7 +16,7 @@ public:
 
   void PrepareRenderTarget(D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle,UINT rtvDescriptorSize,ID3D12Resource* currentRenderTarget,int width,int height,D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle) const;
   void SetGraphicsState(ID3D12RootSignature* rootSig, D3D12_GPU_VIRTUAL_ADDRESS cbAddress, ID3D12PipelineState* pso) const;
-  void DrawMesh(const RenderMeshComponent& mesh) const;
+  void DrawMesh(const SubMesh& mesh, const MeshAsset& mesh_asset) const;
 
   ID3D12Device* GetDevice() const;
   ID3D12CommandQueue* GetCommandQueue() const;

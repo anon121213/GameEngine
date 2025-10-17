@@ -5,9 +5,9 @@ cmake_policy(SET CMP0009 NEW)
 # ENGINE_SRC at engine/CMakeLists.txt:1 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "E:/Projects/GameEngine/engine/*.cpp")
 set(OLD_GLOB
+  "E:/Projects/GameEngine/engine/assets/MeshManager.cpp"
   "E:/Projects/GameEngine/engine/core/Engine.cpp"
   "E:/Projects/GameEngine/engine/core/Window.cpp"
-  "E:/Projects/GameEngine/engine/core/log.cpp"
   "E:/Projects/GameEngine/engine/ecs/SystemsContainer.cpp"
   "E:/Projects/GameEngine/engine/fsm/States/BootstrapState.cpp"
   "E:/Projects/GameEngine/engine/fsm/States/StartEngineState.cpp"
@@ -34,6 +34,7 @@ endif()
 # ENGINE_SRC at engine/CMakeLists.txt:1 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "E:/Projects/GameEngine/engine/*.hpp")
 set(OLD_GLOB
+  "E:/Projects/GameEngine/engine/assets/MeshManager.hpp"
   "E:/Projects/GameEngine/engine/components/Transform.hpp"
   "E:/Projects/GameEngine/engine/components/Velocity.hpp"
   "E:/Projects/GameEngine/engine/core/Engine.hpp"
@@ -53,6 +54,8 @@ set(OLD_GLOB
   "E:/Projects/GameEngine/engine/render/Factories/RenderObjectFactory.hpp"
   "E:/Projects/GameEngine/engine/render/RenderService.hpp"
   "E:/Projects/GameEngine/engine/render/components/CameraComponent.hpp"
+  "E:/Projects/GameEngine/engine/render/components/MeshAsset.hpp"
+  "E:/Projects/GameEngine/engine/render/components/MeshKey.hpp"
   "E:/Projects/GameEngine/engine/render/components/RenderMeshComponent.hpp"
   "E:/Projects/GameEngine/engine/render/dx12/DX12Renderer.hpp"
   "E:/Projects/GameEngine/engine/render/dx12/services/ModelLoaderService.hpp"
