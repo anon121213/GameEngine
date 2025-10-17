@@ -28,9 +28,9 @@ public:
 
     void OnInitialize() const;
     void OnStart() const;
-    void OnUpdate() const;
-    void OnFixedUpdate() const;
-    void OnLateUpdate() const;
+    void OnUpdate(float deltaTime) const;
+    void OnFixedUpdate(float fixedDeltaTime) const;
+    void OnLateUpdate(float deltaTime) const;
     void OnDispose() const;
 
 private:

@@ -9,8 +9,8 @@
 using Microsoft::WRL::ComPtr;
 
 bool RendererPipelineService::Create(ID3D12Device* device, ID3D12RootSignature* rootSig) {
-    Microsoft::WRL::ComPtr<ID3DBlob> vsBlob;
-    Microsoft::WRL::ComPtr<ID3DBlob> psBlob;
+    ComPtr<ID3DBlob> vsBlob;
+    ComPtr<ID3DBlob> psBlob;
 
     if (FAILED(D3DReadFileToBlob(L"shaders/VertexShader.cso", &vsBlob)) ||
         FAILED(D3DReadFileToBlob(L"shaders/PixelShader.cso", &psBlob))) {
@@ -30,10 +30,9 @@ bool RendererPipelineService::Create(ID3D12Device* device, ID3D12RootSignature* 
     psoDesc.VS = { vsBlob->GetBufferPointer(), vsBlob->GetBufferSize() };
     psoDesc.PS = { psBlob->GetBufferPointer(), psBlob->GetBufferSize() };
 
-    // Настройка растеризатора с включённым отсечением задних граней
     psoDesc.RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
     psoDesc.RasterizerState.CullMode = D3D12_CULL_MODE_BACK;
-    psoDesc.RasterizerState.FrontCounterClockwise = FALSE; // меняй на TRUE если порядок CCW
+    psoDesc.RasterizerState.FrontCounterClockwise = FALSE;
 
     psoDesc.BlendState = CD3DX12_BLEND_DESC(D3D12_DEFAULT);
     psoDesc.DepthStencilState = CD3DX12_DEPTH_STENCIL_DESC(D3D12_DEFAULT);

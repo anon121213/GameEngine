@@ -17,7 +17,7 @@ public:
     }
 
     [[nodiscard]] bool Has(Entity entity) const {
-        return components.find(entity) != components.end();
+        return components.contains(entity);
     }
 
     void Remove(Entity entity) {

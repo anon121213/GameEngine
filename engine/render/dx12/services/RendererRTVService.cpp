@@ -27,12 +27,12 @@ bool RendererRTVService::Create(ID3D12Device* device, IDXGISwapChain3* swapChain
   return true;
 }
 
-void RendererRTVService::UpdateFrameIndex(UINT newFrameIndex) {
+void RendererRTVService::UpdateFrameIndex(const UINT newFrameIndex) {
   currentFrameIndex = newFrameIndex;
 }
 
 D3D12_CPU_DESCRIPTOR_HANDLE RendererRTVService::GetRTVHandle() const {
-  CD3DX12_CPU_DESCRIPTOR_HANDLE handle(rtvHeap->GetCPUDescriptorHandleForHeapStart(), currentFrameIndex, rtvDescriptorSize);
+  const CD3DX12_CPU_DESCRIPTOR_HANDLE handle(rtvHeap->GetCPUDescriptorHandleForHeapStart(), currentFrameIndex, rtvDescriptorSize);
   return handle;
 }
 

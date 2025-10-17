@@ -4,6 +4,7 @@
 #include "fsm/StateMachine.hpp"
 #include "fsm/States/BootstrapState.hpp"
 #include "fsm/States/StartEngineState.hpp"
+#include "fsm/States/RegisterServicesState.hpp"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
     AllocConsole();
@@ -12,6 +13,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
     const auto fsm = std::make_shared<StateMachine>();
     ServiceLocator::Register<StateMachine>(fsm);
     fsm->Register<BootstrapState>(std::make_unique<BootstrapState>());
+    fsm->Register<RegisterServicesState>(std::make_unique<RegisterServicesState>());
     fsm->Register<StartEngineState>(std::make_unique<StartEngineState>(hInstance));
     fsm->ChangeState<BootstrapState>();
 

@@ -11,7 +11,7 @@ public:
   void UpdateFrameIndex();
   UINT GetCurrentFrameIndex() const;
 
-  IDXGISwapChain3* GetSwapChain();
+  IDXGISwapChain3* GetSwapChain() const;
 
 private:
   Microsoft::WRL::ComPtr<IDXGISwapChain3> swapChain;

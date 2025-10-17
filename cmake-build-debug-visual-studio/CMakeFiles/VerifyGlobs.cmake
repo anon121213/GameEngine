@@ -10,6 +10,7 @@ set(OLD_GLOB
   "E:/Projects/GameEngine/engine/core/Window.cpp"
   "E:/Projects/GameEngine/engine/ecs/SystemsContainer.cpp"
   "E:/Projects/GameEngine/engine/fsm/States/BootstrapState.cpp"
+  "E:/Projects/GameEngine/engine/fsm/States/RegisterServicesState.cpp"
   "E:/Projects/GameEngine/engine/fsm/States/StartEngineState.cpp"
   "E:/Projects/GameEngine/engine/render/Factories/RenderObjectFactory.cpp"
   "E:/Projects/GameEngine/engine/render/RenderService.cpp"
@@ -50,6 +51,7 @@ set(OLD_GLOB
   "E:/Projects/GameEngine/engine/fsm/IState.hpp"
   "E:/Projects/GameEngine/engine/fsm/StateMachine.hpp"
   "E:/Projects/GameEngine/engine/fsm/States/BootstrapState.hpp"
+  "E:/Projects/GameEngine/engine/fsm/States/RegisterServicesState.hpp"
   "E:/Projects/GameEngine/engine/fsm/States/StartEngineState.hpp"
   "E:/Projects/GameEngine/engine/render/Factories/RenderObjectFactory.hpp"
   "E:/Projects/GameEngine/engine/render/RenderService.hpp"
@@ -69,6 +71,12 @@ set(OLD_GLOB
   "E:/Projects/GameEngine/engine/render/dx12/services/RendererSwapChainService.hpp"
   "E:/Projects/GameEngine/engine/render/systems/CameraSystem.hpp"
   "E:/Projects/GameEngine/engine/render/systems/RenderSystem.hpp"
+  "E:/Projects/GameEngine/engine/services/IDisposable.hpp"
+  "E:/Projects/GameEngine/engine/services/IFixedUpdateble.hpp"
+  "E:/Projects/GameEngine/engine/services/IInitializeble.hpp"
+  "E:/Projects/GameEngine/engine/services/ILateUpdatable.hpp"
+  "E:/Projects/GameEngine/engine/services/IStartable.hpp"
+  "E:/Projects/GameEngine/engine/services/IUpdateable.hpp"
   "E:/Projects/GameEngine/engine/services/ServiceLocator.hpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

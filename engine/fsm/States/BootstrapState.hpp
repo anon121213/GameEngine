@@ -1,9 +1,8 @@
 ﻿#pragma once
-#include <windows.h>
+
 #include "fsm/IState.hpp"
 
-class BootstrapState : public IState {
+class BootstrapState final : public IState {
 public:
-    void Enter() override;
-    void Exit() override;
+  void Enter() override;
 };

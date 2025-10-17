@@ -14,8 +14,8 @@ namespace Log {
         Error
     };
 
-    inline Level currentLevel = Level::Trace;
-    inline void SetLevel(Level level) { currentLevel = level; }
+    inline auto currentLevel = Level::Trace;
+    inline void SetLevel(const Level level) { currentLevel = level; }
 
     template<typename... Args>
     void Print(Level level, std::string_view fmt, Args&&... args)
@@ -35,12 +35,11 @@ namespace Log {
 
         std::string formatted;
         try {
-            // ✅ без make_format_args, полностью безопасно для MSVC
             formatted = std::vformat(fmt, std::make_format_args(args...));
         }
         catch (...) {
             std::ostringstream oss;
-            (oss << ... << args); // fallback при ошибке форматирования
+            (oss << ... << args);
             formatted = fmt.data();
             formatted += " ";
             formatted += oss.str();
@@ -52,7 +51,7 @@ namespace Log {
         OutputDebugStringA(output.c_str());
     }
 
-} // namespace Log
+} 
 
 #define LOG_TRACE(...) Log::Print(Log::Level::Trace, __VA_ARGS__)
 #define LOG_INFO(...)  Log::Print(Log::Level::Info,  __VA_ARGS__)

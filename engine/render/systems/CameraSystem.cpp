@@ -1,13 +1,10 @@
 ﻿#include "CameraSystem.hpp"
 #include "services/ServiceLocator.hpp"
 #include "ecs/World.hpp"
+
 using namespace DirectX;
 
-void CameraSystem::OnInitialize() {
-  renderer = GET_SERVICE(DX12Renderer);
-}
-
-void CameraSystem::OnUpdate() {
+void CameraSystem::OnUpdate(const float deltaTime) {
   for (auto [entity, transform, camera] : world->View<Transform, CameraComponent>()) {
     if (!camera.primary) continue;
 

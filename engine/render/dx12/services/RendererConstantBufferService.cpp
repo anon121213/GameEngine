@@ -23,13 +23,13 @@ bool RendererConstantBufferService::Create(ID3D12Device* device) {
   return true;
 }
 
-void RendererConstantBufferService::UpdateModelMatrix(uint32_t index, const XMMATRIX& model, const XMMATRIX& view, const XMMATRIX& proj) const {
-  MVP mvp = { model, view, proj };
+void RendererConstantBufferService::UpdateModelMatrix(uint32_t index, const XMMATRIX& model, const XMMATRIX& view, const XMMATRIX& projection) const {
+  const MVP mvp = { model, view, projection };
 
   void* ptr = nullptr;
-  D3D12_RANGE readRange{0, 0};
+  constexpr D3D12_RANGE readRange{0, 0};
   if (SUCCEEDED(constantBuffer->Map(0, &readRange, &ptr))) {
-    auto offset = index * sizeof(MVP);
+    const auto offset = index * sizeof(MVP);
     memcpy(static_cast<uint8_t*>(ptr) + offset, &mvp, sizeof(MVP));
     constantBuffer->Unmap(0, nullptr);
   }

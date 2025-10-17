@@ -7,7 +7,7 @@
 #include <assimp/scene.h>
 #include <glm/gtc/matrix_inverse.hpp>
 #include "core/Log.hpp"
-#include <algorithm> // для std::min/std::max
+#include <algorithm> 
 
 
 static void ComputeAABB(const std::vector<Vertex>& verts,

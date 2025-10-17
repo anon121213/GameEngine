@@ -1,12 +1,13 @@
 ﻿#include "DX12Renderer.hpp"
 #include <d3dx12.h>
+#include <assets/MeshManager.hpp>
 
 #include "core/Log.hpp"
 #include "services/ServiceLocator.hpp"
 
 using namespace DirectX;
 
-bool DX12Renderer::Init(HWND hwnd, int width, int height) {
+bool DX12Renderer::Init(const HWND hwnd, const int width, const int height) {
     this->width = width;
     this->height = height;
 

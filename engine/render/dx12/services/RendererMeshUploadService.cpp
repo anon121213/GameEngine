@@ -46,8 +46,8 @@ void RendererMeshUploadService::CreateVertexBuffer(ID3D12Device* device, SubMesh
 {
     const UINT vbSize = static_cast<UINT>(asset.vertices.size() * sizeof(Vertex));
 
-    CD3DX12_HEAP_PROPERTIES heapProps(D3D12_HEAP_TYPE_UPLOAD);
-    CD3DX12_RESOURCE_DESC bufferDesc = CD3DX12_RESOURCE_DESC::Buffer(vbSize);
+    const CD3DX12_HEAP_PROPERTIES heapProps(D3D12_HEAP_TYPE_UPLOAD);
+    const CD3DX12_RESOURCE_DESC bufferDesc = CD3DX12_RESOURCE_DESC::Buffer(vbSize);
 
     HRESULT hr = device->CreateCommittedResource(
         &heapProps,
@@ -65,7 +65,7 @@ void RendererMeshUploadService::CreateVertexBuffer(ID3D12Device* device, SubMesh
     }
 
     void* vbData = nullptr;
-    D3D12_RANGE readRange = {0, 0};
+    constexpr D3D12_RANGE readRange = {0, 0};
     hr = subMesh.vertexBuffer->Map(0, &readRange, &vbData);
     if (SUCCEEDED(hr))
     {
@@ -86,8 +86,8 @@ void RendererMeshUploadService::CreateIndexBuffer(ID3D12Device* device, SubMesh&
 {
     const UINT ibSize = static_cast<UINT>(asset.indices.size() * sizeof(uint32_t));
 
-    CD3DX12_HEAP_PROPERTIES heapProps(D3D12_HEAP_TYPE_UPLOAD);
-    CD3DX12_RESOURCE_DESC bufferDesc = CD3DX12_RESOURCE_DESC::Buffer(ibSize);
+    const CD3DX12_HEAP_PROPERTIES heapProps(D3D12_HEAP_TYPE_UPLOAD);
+    const CD3DX12_RESOURCE_DESC bufferDesc = CD3DX12_RESOURCE_DESC::Buffer(ibSize);
 
     HRESULT hr = device->CreateCommittedResource(
         &heapProps,
@@ -105,7 +105,7 @@ void RendererMeshUploadService::CreateIndexBuffer(ID3D12Device* device, SubMesh&
     }
 
     void* ibData = nullptr;
-    D3D12_RANGE readRange = {0, 0};
+    constexpr D3D12_RANGE readRange = {0, 0};
     hr = subMesh.indexBuffer->Map(0, &readRange, &ibData);
     if (SUCCEEDED(hr))
     {

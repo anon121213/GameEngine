@@ -1,65 +1,49 @@
 ﻿#include "Engine.hpp"
 #include "core/Log.hpp"
-#include "core/Window.hpp"
 #include <chrono>
 
 #include "components/Transform.hpp"
 #include "render/RenderService.hpp"
 #include "render/components/CameraComponent.hpp"
-#include "render/dx12/services/ModelLoaderService.hpp"
 #include "render/Factories/RenderObjectFactory.hpp"
 #include "render/systems/CameraSystem.hpp"
 #include "render/systems/RenderSystem.hpp"
 #include "services/ServiceLocator.hpp"
 
-
 Engine::Engine() {
-    world = std::make_shared<World>();
-    renderService = std::make_unique<RenderService>();
-    systemsContainer = std::make_unique<SystemsContainer>();
-    
-    ServiceLocator::Register<World>(world);
-    ServiceLocator::Register<DX12Renderer>(std::make_shared<DX12Renderer>());
-    ServiceLocator::Register<ModelLoaderService>(std::make_shared<ModelLoaderService>());
-    ServiceLocator::Register<MeshManager>(std::make_shared<MeshManager>());
-
     systemsContainer->AddSystem<RenderSystem>();
     systemsContainer->AddSystem<CameraSystem>();
 }
 
 void Engine::Awake() const {
     LOG_INFO("Engine: Awake");
+    ServiceLocator::InitializeAll();
     systemsContainer->OnInitialize();
 
-    // Camera
-    Entity camera = world->CreateEntity();
+    // TO DO Delete this debug objects from this 
+    
+    const Entity camera = world->CreateEntity();
     world->AddComponent<Transform>(camera, RenderObjectFactory::CreateTransform({0.0f, 3.0f, -50.0f}));
     world->AddComponent<CameraComponent>(camera, RenderObjectFactory::CreateCamera());
     
-    /*Entity cube = world->CreateEntity();
-    world->AddComponent<RenderMeshComponent>(cube, RenderObjectFactory::CreateCube());
-    world->AddComponent<Transform>(cube, RenderObjectFactory::CreateTransform({15, 7, 0}, {}, {7, 7, 7}));
-
-    Entity cube2 = world->CreateEntity();
-    world->AddComponent<RenderMeshComponent>(cube2, RenderObjectFactory::CreateCube());
-    world->AddComponent<Transform>(cube2, RenderObjectFactory::CreateTransform({-15, -7, 0}, {}, {9, 9, 9}));  */
-
-    Entity car = world->CreateEntity();
+    const Entity car = world->CreateEntity();
     world->AddComponent<RenderMeshComponent>(car, RenderObjectFactory::GetFBXMesh("E:\\Projects\\GameEngine\\assets\\uploads_files_2792345_Koenigsegg.fbx"));
     world->AddComponent<Transform>(car, RenderObjectFactory::CreateTransform({0,0,0}, {},  { 0.01f, 0.01f, 0.01f }));
 }
 
 void Engine::Start() const {
     LOG_INFO("Engine: Start");
+    ServiceLocator::StartAll();
     systemsContainer->OnStart();
 }
 
-void Engine::FixedUpdate() const {
-    systemsContainer->OnFixedUpdate();
+void Engine::FixedUpdate(const float fixedDeltaTime) const {
+    ServiceLocator::FixedUpdateAll(fixedDeltaTime);
+    systemsContainer->OnFixedUpdate(fixedDeltaTime);
 }
 
-void Engine::Update(float dt) {
-    totalTime += dt;
+void Engine::Update(const float deltaTime) {
+    totalTime += deltaTime;
 
     for (auto [entity, transform] : world->View<Transform>()) {
         if (world->HasComponent<CameraComponent>(entity))
@@ -67,15 +51,18 @@ void Engine::Update(float dt) {
         
         transform.rotation.y = totalTime;
     }
-    systemsContainer->OnUpdate();
+
+    ServiceLocator::UpdateAll(deltaTime);
+    systemsContainer->OnUpdate(deltaTime);
 }
 
-void Engine::LateUpdate() const {
-    systemsContainer->OnLateUpdate();
+void Engine::LateUpdate(const float deltaTime) const {
+    ServiceLocator::UpdateAll(deltaTime);
+    systemsContainer->OnLateUpdate(deltaTime);
 }
 
-void Engine::Shutdown() {
-    LOG_INFO("Engine: Shutdown");
+void Engine::Dispose() {
+    ServiceLocator::DisposeAll();
     systemsContainer->OnDispose();
     world.reset();
 }
@@ -92,35 +79,31 @@ void Engine::RunEditorLoop(HINSTANCE hInstance) {
 
     MSG msg = {};
     while (msg.message != WM_QUIT) {
-        // Windows message processing
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
             TranslateMessage(&msg);
             DispatchMessage(&msg);
             continue;
         }
 
-        // Engine logic + rendering
         using Clock = std::chrono::high_resolution_clock;
         static auto lastTime = Clock::now();
         auto now = Clock::now();
-        float dt = std::chrono::duration<float>(now - lastTime).count();
+        const float dt = std::chrono::duration<float>(now - lastTime).count();
         lastTime = now;
 
         renderService->BeginFrame();
 
         accumulator += dt;
         while (accumulator >= fixedTimeStep) {
-            FixedUpdate();
+            FixedUpdate(accumulator);
             accumulator -= fixedTimeStep;
         }
 
         Update(dt);
-        LateUpdate();
+        LateUpdate(dt);
 
         renderService->EndFrame();
     }
 
-    Shutdown();
+    Dispose();
 }
-
-

@@ -4,22 +4,11 @@
 #include "render/components/CameraComponent.hpp"
 #include "render/dx12/DX12Renderer.hpp"
 
-class CameraSystem : public ISystem {
+class CameraSystem final : public ISystem {
 public:
-  void OnInitialize() override;
-  void OnUpdate() override;
+  void OnUpdate(float deltaTime) override;
 
 private:
-  std::shared_ptr<DX12Renderer> renderer;
-
+  std::shared_ptr<DX12Renderer> renderer = ServiceLocator::Get<DX12Renderer>();;
   static DirectX::XMMATRIX GetRotationMatrix(const Transform &t);
-
-public:
-  void OnStart() override {}
-
-  void OnFixedUpdate() override {}
-
-  void OnLateUpdate() override {}
-
-  void OnDispose() override {}
 };

@@ -70,5 +70,5 @@ public:
 
 private:
     StorageTuple storages;
-    std::remove_pointer_t<typename std::tuple_element<0, StorageTuple>::type>* smallestStorage;
+    std::remove_pointer_t<std::tuple_element_t<0, StorageTuple>>* smallestStorage;
 };

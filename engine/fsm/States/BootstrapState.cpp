@@ -7,6 +7,7 @@
 #include "BootstrapState.hpp"
 #include "StartEngineState.hpp"
 #include "services/ServiceLocator.hpp"
+#include "RegisterServicesState.hpp"
 
 void BootstrapState::Enter() {
     SetConsoleOutputCP(CP_UTF8);
@@ -18,12 +19,8 @@ void BootstrapState::Enter() {
     dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
     SetConsoleMode(hOut, dwMode);
     
-    Log::SetLevel(Log::Level::Trace);
+    SetLevel(Log::Level::Trace);
 
     const auto fsm = ServiceLocator::Get<StateMachine>();
-    fsm->ChangeState<StartEngineState>();
-}
-
-void BootstrapState::Exit() {
-    LOG_INFO("BootstrapState: exiting.");
+    fsm->ChangeState<RegisterServicesState>();
 }

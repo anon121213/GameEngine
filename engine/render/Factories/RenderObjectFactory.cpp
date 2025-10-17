@@ -8,10 +8,6 @@
 #include "render/dx12/services/ModelLoaderService.hpp"
 #include "services/ServiceLocator.hpp"
 
-// ====================================================
-//  ПРИМИТИВЫ
-// ====================================================
-
 RenderMeshComponent RenderObjectFactory::CreateTriangle()
 {
     MeshAsset asset;
@@ -25,10 +21,8 @@ RenderMeshComponent RenderObjectFactory::CreateTriangle()
 
     asset.indices = { 0, 1, 2 };
 
-    // Регистрируем меш
     ServiceLocator::Get<MeshManager>()->RegisterPrimitive(asset);
 
-    // Создаём компонент
     RenderMeshComponent mesh{};
     mesh.constantBufferIndex = GetNextConstantBufferIndex();
 
@@ -78,7 +72,7 @@ RenderMeshComponent RenderObjectFactory::CreateCube()
     return mesh;
 }
 
-RenderMeshComponent RenderObjectFactory::CreatePlane(float size)
+RenderMeshComponent RenderObjectFactory::CreatePlane(const float size)
 {
     MeshAsset asset;
     asset.path = "Primitive:Plane";
@@ -107,10 +101,6 @@ RenderMeshComponent RenderObjectFactory::CreatePlane(float size)
     return mesh;
 }
 
-// ====================================================
-//  ПРОЧЕЕ
-// ====================================================
-
 Transform RenderObjectFactory::CreateTransform(const glm::vec3& position,
                                                const glm::vec3& rotation,
                                                const glm::vec3& scale)
@@ -122,7 +112,7 @@ Transform RenderObjectFactory::CreateTransform(const glm::vec3& position,
     return transform;
 }
 
-CameraComponent RenderObjectFactory::CreateCamera(float fov, float nearZ, float farZ, bool primary)
+CameraComponent RenderObjectFactory::CreateCamera(const float fov, const float nearZ, const float farZ, const bool primary)
 {
     CameraComponent cam;
     cam.fov = fov;
@@ -132,14 +122,10 @@ CameraComponent RenderObjectFactory::CreateCamera(float fov, float nearZ, float 
     return cam;
 }
 
-// ====================================================
-//  FBX / ASSIMP
-// ====================================================
-
 RenderMeshComponent RenderObjectFactory::GetFBXMesh(const std::string& path)
 {
-    auto modelLoader = ServiceLocator::Get<ModelLoaderService>();
-    std::vector<MeshAsset> meshes = modelLoader->LoadModel(path);
+    const auto modelLoader = ServiceLocator::Get<ModelLoaderService>();
+    const std::vector<MeshAsset> meshes = modelLoader->LoadModel(path);
 
     RenderMeshComponent renderMesh{};
     renderMesh.constantBufferIndex = GetNextConstantBufferIndex();
@@ -150,7 +136,7 @@ RenderMeshComponent RenderObjectFactory::GetFBXMesh(const std::string& path)
         return renderMesh;
     }
 
-    auto meshManager = ServiceLocator::Get<MeshManager>();
+    const auto meshManager = ServiceLocator::Get<MeshManager>();
     for (auto& asset : meshes)
     {
         meshManager->RegisterPrimitive(asset);
@@ -169,10 +155,6 @@ RenderMeshComponent RenderObjectFactory::GetFBXMesh(const std::string& path)
 
     return renderMesh;
 }
-
-// ====================================================
-//  BUFFER INDEX
-// ====================================================
 
 static uint32_t cbIndexCounter = 0;
 uint32_t RenderObjectFactory::GetNextConstantBufferIndex()

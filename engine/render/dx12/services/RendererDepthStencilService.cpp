@@ -28,7 +28,7 @@ bool RendererDepthStencilService::Create(ID3D12Device* device, int width, int he
     clearValue.DepthStencil.Depth = 1.0f;
     clearValue.DepthStencil.Stencil = 0;
 
-    CD3DX12_HEAP_PROPERTIES heapProps(D3D12_HEAP_TYPE_DEFAULT);
+    const CD3DX12_HEAP_PROPERTIES heapProps(D3D12_HEAP_TYPE_DEFAULT);
     if (FAILED(device->CreateCommittedResource(
         &heapProps,
         D3D12_HEAP_FLAG_NONE,

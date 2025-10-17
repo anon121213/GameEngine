@@ -1,10 +1,8 @@
 ﻿#include "SystemsContainer.hpp"
 
 void SystemsContainer::OnInitialize() const {
-    for (const auto& system: systems) {
-        system->Initialize();
+    for (const auto& system: systems)
         system->OnInitialize();
-    }
 }
 
 void SystemsContainer::OnStart() const {
@@ -12,19 +10,19 @@ void SystemsContainer::OnStart() const {
         system->OnStart();
 }
 
-void SystemsContainer::OnUpdate() const {
+void SystemsContainer::OnFixedUpdate(const float fixedDeltaTime) const {
     for (const auto& system: systems)
-        system->OnUpdate();
+        system->OnFixedUpdate(fixedDeltaTime);
 }
 
-void SystemsContainer::OnFixedUpdate() const {
+void SystemsContainer::OnUpdate(const float deltaTime) const {
     for (const auto& system: systems)
-        system->OnFixedUpdate();
+        system->OnUpdate(deltaTime);
 }
 
-void SystemsContainer::OnLateUpdate() const {
+void SystemsContainer::OnLateUpdate(const float deltaTime) const {
     for (const auto& system: systems)
-        system->OnLateUpdate();
+        system->OnLateUpdate(deltaTime);
 }
 
 void SystemsContainer::OnDispose() const {

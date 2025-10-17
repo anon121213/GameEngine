@@ -3,11 +3,7 @@
 #include "components/Transform.hpp"
 #include "render/components/RenderMeshComponent.hpp"
 
-void RenderSystem::OnInitialize() {
-  renderer = GET_SERVICE(DX12Renderer);
-}
-
-void RenderSystem::OnUpdate() {
+void RenderSystem::OnUpdate(float deltaTime) {
   for (auto [entity, transform, mesh]: world->View<Transform, RenderMeshComponent>()) {
     renderer->DrawMesh(mesh, transform);
   }

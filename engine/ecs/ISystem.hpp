@@ -7,18 +7,13 @@ class ISystem {
 public:
     virtual ~ISystem() = default;
 
-    void Initialize() {
-        world = GET_SERVICE(World);
-        OnInitialize();
-    }
-
     virtual void OnInitialize() {}
-    virtual void OnStart() = 0;
-    virtual void OnUpdate() = 0;
-    virtual void OnFixedUpdate() = 0;
-    virtual void OnLateUpdate() = 0;
-    virtual void OnDispose() = 0;
+    virtual void OnStart() {}
+    virtual void OnFixedUpdate(float fixedDeltaTime) {}
+    virtual void OnUpdate(float deltaTime) {}
+    virtual void OnLateUpdate(float deltaTime) {}
+    virtual void OnDispose() {}
 
 protected:
-    std::shared_ptr<World> world;
+    std::shared_ptr<World> world = ServiceLocator::Get<World>();
 };

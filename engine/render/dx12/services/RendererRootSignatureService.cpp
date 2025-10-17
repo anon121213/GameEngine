@@ -21,7 +21,7 @@ bool RendererRootSignatureService::Create(ID3D12Device* device) {
                                            &serializedRootSig, &errorBlob);
 
   if (FAILED(hr)) {
-    if (errorBlob) OutputDebugStringA((char*)errorBlob->GetBufferPointer());
+    if (errorBlob) OutputDebugStringA(static_cast<char *>(errorBlob->GetBufferPointer()));
     return false;
   }
 

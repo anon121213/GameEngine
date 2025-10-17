@@ -26,7 +26,7 @@ void StateMachine::Register(std::unique_ptr<IState> state) {
 
 template<typename T>
 void StateMachine::ChangeState() {
-    auto it = states.find(std::type_index(typeid(T)));
+    const auto it = states.find(std::type_index(typeid(T)));
     if (it == states.end()) return;
 
     if (current)

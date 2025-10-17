@@ -6,9 +6,9 @@
 class MeshManager {
 public:
   void RegisterPrimitive(const MeshAsset& asset);
-  const MeshAsset& LoadMesh(const std::string& path); // возвращаем const&; храним внутри
+  const MeshAsset& LoadMesh(const std::string& path);
 
 private:
   std::unordered_map<std::string, MeshAsset> meshes;
-  MeshAsset empty; // безопасная заглушка
+  MeshAsset empty;
 };

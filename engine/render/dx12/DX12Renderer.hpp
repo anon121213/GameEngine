@@ -13,7 +13,8 @@
 class DX12Renderer {
 public:
     bool Init(HWND hwnd, int width, int height);
-    void Shutdown();
+
+    static void Shutdown();
 
     void BeginFrame() const;
     void EndFrame();

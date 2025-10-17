@@ -1,5 +1,4 @@
-﻿// CommandService.cpp
-#include "RendererCommandService.hpp"
+﻿#include "RendererCommandService.hpp"
 #include "render/components/RenderMeshComponent.hpp"
 #include <d3dx12.h>
 #include <render/components/MeshAsset.hpp>

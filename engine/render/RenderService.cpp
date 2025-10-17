@@ -5,7 +5,7 @@
 #include "core/Log.hpp"
 #include "services/ServiceLocator.hpp"
 
-LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+LRESULT CALLBACK WindowProc(const HWND hwnd, const UINT uMsg, const WPARAM wParam, const LPARAM lParam) {
     if (uMsg == WM_DESTROY) {
         PostQuitMessage(0);
         return 0;
@@ -13,13 +13,13 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
     return DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
 
-bool RenderService::Init(HINSTANCE hInstance, int width, int height, const std::string& title) {
+bool RenderService::Init(const HINSTANCE hInstance, const int width, const int height, const std::string& title) {
     instance = hInstance;
     if (!CreateAppWindow(width, height, title)) {
         return false;
     }
 
-    dxRenderer = GET_SERVICE(DX12Renderer);
+    dxRenderer = ServiceLocator::Get<DX12Renderer>();
     if (!dxRenderer->Init(hwnd, width, height)) {
         return false;
     }
@@ -38,8 +38,8 @@ void RenderService::Shutdown() {
     }
 }
 
-bool RenderService::CreateAppWindow(int width, int height, const std::string& title) {
-    const wchar_t CLASS_NAME[] = L"DX12WindowClass";
+bool RenderService::CreateAppWindow(const int width, const int height, const std::string& title) {
+    constexpr wchar_t CLASS_NAME[] = L"DX12WindowClass";
 
     WNDCLASSW wc = {};
     wc.lpfnWndProc = WindowProc;
@@ -48,7 +48,7 @@ bool RenderService::CreateAppWindow(int width, int height, const std::string& ti
 
     RegisterClassW(&wc);
 
-    std::wstring wTitle(title.begin(), title.end());
+    const std::wstring wTitle(title.begin(), title.end());
     hwnd = CreateWindowExW(
         0,
         CLASS_NAME,
