@@ -1,10 +1,9 @@
 ﻿#include "Engine.hpp"
 #include "core/Log.hpp"
 #include <chrono>
+#include <render/dx12/services/ModelLoaderService.hpp>
 
-#include "components/Transform.hpp"
 #include "render/RenderService.hpp"
-#include "render/components/CameraComponent.hpp"
 #include "render/Factories/RenderObjectFactory.hpp"
 #include "render/systems/CameraSystem.hpp"
 #include "render/systems/RenderSystem.hpp"
@@ -25,10 +24,10 @@ void Engine::Awake() const {
     const Entity camera = world->CreateEntity();
     world->AddComponent<Transform>(camera, RenderObjectFactory::CreateTransform({0.0f, 3.0f, -50.0f}));
     world->AddComponent<CameraComponent>(camera, RenderObjectFactory::CreateCamera());
-    
+
     const Entity car = world->CreateEntity();
-    world->AddComponent<RenderMeshComponent>(car, RenderObjectFactory::GetFBXMesh("E:\\Projects\\GameEngine\\assets\\uploads_files_2792345_Koenigsegg.fbx"));
-    world->AddComponent<Transform>(car, RenderObjectFactory::CreateTransform({0,0,0}, {},  { 0.01f, 0.01f, 0.01f }));
+    world->AddComponent<RenderMeshComponent>(car, RenderObjectFactory::GetFBXMesh("E:\\Projects\\GameEngine\\assets\\Koenigsegg\\source\\car.fbx"));
+    world->AddComponent<Transform>(car, RenderObjectFactory::CreateTransform({0,-1,0}, {},  {0.07f, 0.07f, 0.07f}));
 }
 
 void Engine::Start() const {

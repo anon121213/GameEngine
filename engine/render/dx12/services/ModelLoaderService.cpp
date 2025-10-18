@@ -1,6 +1,6 @@
 ﻿#define NOMINMAX
 #include "ModelLoaderService.hpp"
-#include "render/components/MeshKey.hpp"
+#include "render/data/mesh/MeshKey.hpp"
 #include <glm/gtc/type_ptr.hpp>
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>

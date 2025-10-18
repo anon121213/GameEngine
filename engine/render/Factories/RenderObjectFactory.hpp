@@ -2,9 +2,9 @@
 
 #include <string>
 
-#include "render/components/RenderMeshComponent.hpp"
-#include "components/Transform.hpp"
-#include "render/components/CameraComponent.hpp"
+#include "components/rendering/RenderMeshComponent.hpp"
+#include "components/base/Transform.hpp"
+#include "components/rendering/CameraComponent.hpp"
 #include <glm/glm.hpp>
 
 class RenderObjectFactory {

@@ -5,18 +5,37 @@
 #include <d3dx12.h>
 #include <wrl.h>
 #include <stdexcept>
+#include <filesystem>
+#include <string>
+#include <windows.h>
 
 using Microsoft::WRL::ComPtr;
+namespace fs = std::filesystem;
 
 bool RendererPipelineService::Create(ID3D12Device* device, ID3D12RootSignature* rootSig) {
     ComPtr<ID3DBlob> vsBlob;
     ComPtr<ID3DBlob> psBlob;
 
-    if (FAILED(D3DReadFileToBlob(L"shaders/VertexShader.cso", &vsBlob)) ||
-        FAILED(D3DReadFileToBlob(L"shaders/PixelShader.cso", &psBlob))) {
+    wchar_t exePath[MAX_PATH];
+    GetModuleFileNameW(nullptr, exePath, MAX_PATH);
+    fs::path exeDir = fs::path(exePath).parent_path();
+
+    fs::path shaderDir = exeDir / "assets" / "shaders";
+    fs::path vertexShaderPath = shaderDir / "VertexShader.cso";
+    fs::path pixelShaderPath = shaderDir / "PixelShader.cso";
+
+    std::wstring debugMsg =
+        L"Trying to load shaders from:\n\n" +
+        vertexShaderPath.wstring() + L"\n" +
+        pixelShaderPath.wstring() + L"\n\nCurrent exe dir:\n" +
+        exeDir.wstring();
+
+    if (FAILED(D3DReadFileToBlob(vertexShaderPath.c_str(), &vsBlob)) ||
+        FAILED(D3DReadFileToBlob(pixelShaderPath.c_str(), &psBlob))) {
+
         MessageBoxA(nullptr, "Failed to load shader .cso files", "Pipeline", MB_OK | MB_ICONERROR);
         return false;
-        }
+    }
 
     D3D12_INPUT_ELEMENT_DESC inputLayout[] = {
         { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0,   D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
@@ -45,7 +64,6 @@ bool RendererPipelineService::Create(ID3D12Device* device, ID3D12RootSignature* 
 
     return SUCCEEDED(device->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&pipelineState)));
 }
-
 
 ID3D12PipelineState* RendererPipelineService::GetPipelineState() const {
     return pipelineState.Get();

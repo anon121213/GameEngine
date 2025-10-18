@@ -15,7 +15,8 @@ public:
 
 private:
     bool running = true;
-    float fixedTimeStep = 1.0f / 60.0f;float totalTime = 0.0f;
+    float fixedTimeStep = 1.0f / 60.0f;
+    float totalTime = 0.0f;
 
     std::shared_ptr<World> world = ServiceLocator::Get<World>();
     std::shared_ptr<RenderService> renderService = ServiceLocator::Get<RenderService>();

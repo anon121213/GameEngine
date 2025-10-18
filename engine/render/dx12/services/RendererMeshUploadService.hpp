@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <d3d12.h>
-#include "render/components/RenderMeshComponent.hpp"
-#include "render/components/MeshAsset.hpp"
+#include "components/rendering/RenderMeshComponent.hpp"
+#include "render/data/Mesh/MeshAsset.hpp"
 
 class RendererMeshUploadService {
 public:

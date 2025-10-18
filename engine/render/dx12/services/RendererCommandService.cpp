@@ -1,7 +1,7 @@
 ﻿#include "RendererCommandService.hpp"
-#include "render/components/RenderMeshComponent.hpp"
+#include "components/rendering/RenderMeshComponent.hpp"
 #include <d3dx12.h>
-#include <render/components/MeshAsset.hpp>
+#include <render/data/mesh/MeshAsset.hpp>
 
 #include "core/Log.hpp"
 
@@ -49,13 +49,12 @@ void RendererCommandService::PrepareRenderTarget(
     commandList->ClearDepthStencilView(dsvHandle, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
 }
 
-
-void RendererCommandService::SetGraphicsState(ID3D12RootSignature* rootSignature, UINT64 cbAddress, ID3D12PipelineState* pipelineState) const {
-    commandList->SetGraphicsRootSignature(rootSignature);
+void RendererCommandService::SetGraphicsState(ID3D12RootSignature* rootSig, D3D12_GPU_VIRTUAL_ADDRESS cbAddress, ID3D12PipelineState* pso) const
+{
+    commandList->SetGraphicsRootSignature(rootSig);
     commandList->SetGraphicsRootConstantBufferView(0, cbAddress);
-    commandList->SetPipelineState(pipelineState);
+    commandList->SetPipelineState(pso);
 }
-
 
 void RendererCommandService::EndFrame(ID3D12Resource* renderTarget) const {
     auto barrier = CD3DX12_RESOURCE_BARRIER::Transition(renderTarget, D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);

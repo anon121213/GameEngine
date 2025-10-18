@@ -1,4 +1,4 @@
-﻿#include "assets/MeshManager.hpp"
+﻿#include "MeshManager.hpp"
 #include "core/Log.hpp"
 
 void MeshManager::RegisterPrimitive(const MeshAsset& asset) {

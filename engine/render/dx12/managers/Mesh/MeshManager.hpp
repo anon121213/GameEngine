@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <string>
 #include <unordered_map>
-#include "render/components/MeshAsset.hpp"
+#include "render/data/mesh/MeshAsset.hpp"
 
 class MeshManager {
 public:

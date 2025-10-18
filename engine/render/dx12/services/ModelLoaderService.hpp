@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <glm/mat4x4.hpp>
-#include "render/components/MeshAsset.hpp"
+#include "render/data/mesh/MeshAsset.hpp"
 
 struct aiNode;
 struct aiScene;

@@ -1,6 +1,6 @@
 ﻿#include "DX12Renderer.hpp"
 #include <d3dx12.h>
-#include <assets/MeshManager.hpp>
+#include <render/dx12/managers/Mesh/MeshManager.hpp>
 
 #include "core/Log.hpp"
 #include "services/ServiceLocator.hpp"

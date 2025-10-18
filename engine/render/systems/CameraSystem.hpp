@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "components/Transform.hpp"
+#include "components/base/Transform.hpp"
 #include "ecs/ISystem.hpp"
-#include "render/components/CameraComponent.hpp"
+#include "components/rendering/CameraComponent.hpp"
 #include "render/dx12/DX12Renderer.hpp"
 
 class CameraSystem final : public ISystem {

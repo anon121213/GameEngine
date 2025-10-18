@@ -1,9 +1,9 @@
-﻿#include <assets/MeshManager.hpp>
+﻿#include <render/dx12/managers/Mesh/MeshManager.hpp>
 
 #include "RegisterServicesState.hpp"
-#include "components/Transform.hpp"
+#include "components/base/Transform.hpp"
 #include "render/RenderService.hpp"
-#include "render/components/CameraComponent.hpp"
+#include "components/rendering/CameraComponent.hpp"
 #include "render/dx12/services/ModelLoaderService.hpp"
 #include "render/Factories/RenderObjectFactory.hpp"
 #include "render/systems/CameraSystem.hpp"

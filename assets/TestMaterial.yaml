@@ -1,0 +1,173 @@
+﻿materials:
+  untitledKoenigsegg_One1_2014Grille1A_Material1:
+    albedo: [1.0, 1.0, 1.0, 1.0]
+    metallic: 0.9
+    roughness: 0.25
+    emissive: 0.0
+    textures:
+      Albedo: "assets/textures/Koenigsegg_One1_2014_Grille1A_DiffuseAOSO.png"
+      Normal: "assets/textures/Koenigsegg_One1_2014_Grille1A_Normal.png"
+
+  untitledKoenigsegg_One1_2014InteriorA_Material1:
+    albedo: [0.9, 0.9, 0.9, 1.0]
+    metallic: 0.0
+    roughness: 0.6
+    emissive: 0.0
+    textures:
+      Albedo: "assets/textures/Koenigsegg_One1_2014_InteriorA_DiffuseAOSO.png"
+      Normal: "assets/textures/Koenigsegg_One1_2014_InteriorA_Normal.png"
+
+  untitledKoenigsegg_One1_2014_Wheel1A_3D_3DWheel1A_Material1:
+    albedo: [0.7, 0.7, 0.7, 1.0]
+    metallic: 1.0
+    roughness: 0.3
+    emissive: 0.0
+    textures:
+      Albedo: "assets/textures/Koenigsegg_One1_2014_Wheel1A_DiffuseAOSO.png"
+      Normal: "assets/textures/Koenigsegg_One1_2014_Wheel1A_Normal.png"
+
+  untitledKoenigsegg_One1_2014EngineA_Material1:
+    albedo: [0.8, 0.8, 0.8, 1.0]
+    metallic: 1.0
+    roughness: 0.2
+    emissive: 0.0
+    textures:
+      Albedo: "assets/textures/Koenigsegg_One1_2014_EngineA_DiffuseAOSO.png"
+      Normal: "assets/textures/Koenigsegg_One1_2014_EngineA_Normal.png"
+
+  untitledKoenigsegg_One1_2014LightA_Material1:
+    albedo: [1.0, 1.0, 1.0, 1.0]
+    metallic: 0.0
+    roughness: 0.1
+    emissive: 1.0
+    textures:
+      Albedo: "assets/textures/Koenigsegg_One1_2014_LightA_Diffuse.png"
+
+  untitledKoenigsegg_One1_2014Carbon1_Material1:
+    albedo: [0.4, 0.4, 0.4, 1.0]
+    metallic: 1.0
+    roughness: 0.2
+    emissive: 0.0
+    textures:
+      Albedo: "assets/textures/common_carbon05_black_diff.png"
+      Normal: "assets/textures/common_carbon05_norm.png"
+
+  untitledKoenigsegg_One1_2014BadgeA_Material1:
+    albedo: [1.0, 1.0, 1.0, 1.0]
+    metallic: 1.0
+    roughness: 0.15
+    emissive: 0.0
+    textures:
+      Albedo: "assets/textures/BadgeA_DiffuseAOSO.png"
+
+  untitledKoenigsegg_One1_2014CalliperGloss_Material1:
+    albedo: [1.0, 1.0, 1.0, 1.0]
+    metallic: 1.0
+    roughness: 0.3
+    emissive: 0.0
+    textures:
+      Albedo: "assets/textures/Global_Texture_Coloured_Diffuse.png"
+      Normal: "assets/textures/Global_Texture_Caliper_Normal.png"
+
+  Koenigsegg_One1_2014CalliperGloss_Material:
+    albedo: [1.0, 1.0, 1.0, 1.0]
+    metallic: 1.0
+    roughness: 0.3
+    emissive: 0.0
+    textures:
+      Albedo: "assets/textures/Global_Texture_Coloured_Diffuse.png"
+      Normal: "assets/textures/Global_Texture_Caliper_Normal.png"
+
+  untitledKoenigsegg_One1_2014Base_Material1:
+    albedo: [1.0, 1.0, 1.0, 1.0]
+    metallic: 0.8
+    roughness: 0.3
+    emissive: 0.0
+
+  untitledKoenigsegg_One1_2014Paint_Material1:
+    albedo: [1.0, 1.0, 1.0, 1.0]
+    metallic: 1.0
+    roughness: 0.25
+    emissive: 0.0
+
+  untitledKoenigsegg_One1_2014Paint_Material1.001:
+    albedo: [1.0, 1.0, 1.0, 1.0]
+    metallic: 1.0
+    roughness: 0.25
+    emissive: 0.0
+
+  untitledKoenigsegg_One1_2014Window_Material1:
+    albedo: [0.5, 0.7, 1.0, 0.3]
+    metallic: 0.0
+    roughness: 0.05
+    emissive: 0.0
+
+  red_glass:
+    albedo: [1.0, 0.2, 0.2, 0.4]
+    metallic: 0.0
+    roughness: 0.1
+    emissive: 0.0
+
+  phong2:
+    albedo: [0.8, 0.8, 0.8, 1.0]
+    metallic: 0.0
+    roughness: 0.5
+    emissive: 0.0
+
+  untitledKoenigsegg_One1_2014Coloured_Material1:
+    albedo: [1.0, 1.0, 1.0, 1.0]
+    metallic: 1.0
+    roughness: 0.3
+    emissive: 0.0
+    textures:
+      Albedo: "assets/textures/Global_Texture_Coloured_Diffuse.png"
+      Normal: "assets/textures/Global_Texture_Caliper_Normal.png"
+
+  untitledKoenigsegg_One1_2014CalliperBadgeA_Material1:
+    albedo: [1.0, 1.0, 1.0, 1.0]
+    metallic: 1.0
+    roughness: 0.2
+    emissive: 0.0
+    textures:
+      Albedo: "assets/textures/BadgeA_DiffuseAOSO.png"
+
+  untitledKoenigsegg_One1_2014Grille2A_Material1:
+    albedo: [0.8, 0.8, 0.8, 1.0]
+    metallic: 0.8
+    roughness: 0.25
+    emissive: 0.0
+    textures:
+      Albedo: "assets/textures/Koenigsegg_One1_2014_Grille2A_DiffuseAOSO.png"
+      Normal: "assets/textures/Koenigsegg_One1_2014_Grille2A_Normal.png"
+
+  untitledKoenigsegg_One1_2014Grille3A_Material1:
+    albedo: [0.8, 0.8, 0.8, 1.0]
+    metallic: 0.8
+    roughness: 0.25
+    emissive: 0.0
+    textures:
+      Albedo: "assets/textures/Koenigsegg_One1_2014_Grille3A_DiffuseAOSO.png"
+      Normal: "assets/textures/Koenigsegg_One1_2014_Grille3A_Normal.png"
+
+  untitledKoenigsegg_One1_2014InteriorTillingA_Material1:
+    albedo: [0.9, 0.9, 0.9, 1.0]
+    metallic: 0.0
+    roughness: 0.6
+    emissive: 0.0
+    textures:
+      Albedo: "assets/textures/Koenigsegg_One1_2014_InteriorTillingA_DiffuseAOSO.png"
+      Normal: "assets/textures/Koenigsegg_One1_2014_InteriorTillingA_Normal.png"
+
+  untitledKoenigsegg_One1_2014ManufacturerPlateA_Material1:
+    albedo: [1.0, 1.0, 1.0, 1.0]
+    metallic: 0.9
+    roughness: 0.2
+    emissive: 0.0
+    textures:
+      Albedo: "assets/textures/Koenigsegg_One1_2014_ManufacturerPlateA_Diffuse.png"
+
+  Default:
+    albedo: [1.0, 0.0, 1.0, 1.0]
+    metallic: 0.0
+    roughness: 1.0
+    emissive: 0.0

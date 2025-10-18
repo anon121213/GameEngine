@@ -8,7 +8,7 @@
 #include "services/RendererConstantBufferService.hpp"
 #include "services/RendererDepthStencilService.hpp"
 #include "services/RendererMeshUploadService.hpp"
-#include "components/Transform.hpp"
+#include "components/base/Transform.hpp"
 
 class DX12Renderer {
 public:

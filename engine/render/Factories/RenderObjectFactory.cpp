@@ -1,8 +1,8 @@
 ﻿#include "RenderObjectFactory.hpp"
-#include "render/components/RenderMeshComponent.hpp"
-#include "components/Transform.hpp"
-#include "render/components/MeshAsset.hpp"
-#include "assets/MeshManager.hpp"
+#include "components/rendering/RenderMeshComponent.hpp"
+#include "components/base/Transform.hpp"
+#include "render/data/mesh/MeshAsset.hpp"
+#include "render/dx12/managers/Mesh/MeshManager.hpp"
 #include "core/Log.hpp"
 #include <glm/glm.hpp>
 #include "render/dx12/services/ModelLoaderService.hpp"

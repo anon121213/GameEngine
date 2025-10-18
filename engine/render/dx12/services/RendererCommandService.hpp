@@ -2,7 +2,7 @@
 #include <wrl.h>
 #include <d3d12.h>
 
-#include "render/components/RenderMeshComponent.hpp"
+#include "components/rendering/RenderMeshComponent.hpp"
 
 struct MeshAsset;
 

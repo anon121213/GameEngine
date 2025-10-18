@@ -1,7 +1,7 @@
 ﻿#include "render/dx12/services/RendererMeshUploadService.hpp"
 #include <d3dx12.h>
 #include <cstring>
-#include "assets/MeshManager.hpp"
+#include "render/dx12/managers/Mesh/MeshManager.hpp"
 #include "services/ServiceLocator.hpp"
 #include "core/Log.hpp"
 
